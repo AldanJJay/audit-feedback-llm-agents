@@ -25,7 +25,7 @@ A negative significant contrast does not support its predicted positive directio
 
 The six documents in [preregistration/](preregistration/) are byte-identical copies from the development repository: the plan, freeze marker, amendment evidence, calibration report, noise report, and research contract. The plan includes both amendments and recorded PI answers. Its SHA-256 is `dd8eaf872b37593433b3168725962937394d1b5d1c4ef005fe415534c37235a1`, matching `FROZEN.json`.
 
-The frozen documents retain the internal project codenames **NS-B1/NS-B2**, historical workflow descriptions, original paths such as `docs/ns-b2/`, and historical DRAFT headings. `FROZEN.json`'s commit `72d05151df3fd1944fb009dda7506707ff455c82` refers to the **development repository**, whose history is deliberately absent here. The original manuscript PDF and the historical data-availability statement in its LaTeX source also retain development-repository references. This repository has a fresh public history; these historical identifiers are not public commit IDs.
+The frozen documents retain the internal project codenames **NS-B1/NS-B2**, historical workflow descriptions, original paths such as `docs/ns-b2/`, and historical DRAFT headings. `FROZEN.json`'s commit `72d05151df3fd1944fb009dda7506707ff455c82` refers to the **development repository**, whose history is deliberately absent here. This repository has a fresh public history; these historical identifiers are not public commit IDs.
 
 The internal Python and data paths remain `src/v2` and `data/v2`. The legacy `ns-b2-analysis-v1` schema identifier, `nsb2:` cost-ledger tags, and optional `NS_B1_AUTH_JSON` environment variable remain for compatibility with recorded artifacts. These are the explained codename occurrences outside the frozen documents. The `v9` and `v10` figure directories contain only assets referenced by the current manuscript (plus the README design PNG); earlier manuscripts and their code/data are excluded.
 
@@ -34,7 +34,7 @@ Non-frozen copies have portable paths and public-facing documentation. The scien
 ## Repository layout
 
 ```text
-paper/                         Original v13 preprint PDF; compilable latex/main.tex
+paper/                         v14 preprint PDF; matching compilable latex/main.tex
 preregistration/               Six unchanged historical documents
 results/                       Interpretive results and collection run log
 src/v2/                        Simulation, prompts, attribution, clients and analyses
@@ -79,7 +79,7 @@ To compile the paper, install a TeX Live distribution with `latexmk`, `pdflatex`
 make paper
 ```
 
-This builds `paper/latex/main.pdf`. The separately supplied `paper/audit_feedback_llm_agents.pdf` remains the original manuscript PDF; the public LaTeX copy has portable repository references and cleaned preparation prose.
+This builds `paper/latex/main.pdf`. The supplied `paper/audit_feedback_llm_agents.pdf` and `paper/latex/main.tex` are the matching v14 manuscript, with public repository links and freeze provenance identified by the preregistration SHA-256 and `preregistration/FROZEN.json`.
 
 ## Rerunning collection
 
