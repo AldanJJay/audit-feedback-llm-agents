@@ -1,0 +1,12 @@
+{
+  "type": "run_end",
+  "status": "complete",
+  "model": "openai/gpt-6-luna",
+  "stage": "confirm",
+  "condition": "naive",
+  "seed": 203,
+  "calls": 519,
+  "prompt_tokens": 333551,
+  "completion_tokens": 13148,
+  "cost_usd": 0.03979810000000019
+}

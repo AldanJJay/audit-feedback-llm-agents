@@ -1,0 +1,23 @@
+\begin{table}[tbp]
+\caption{Naive instrument validity at ticks 0--39. All pooled true-driver rates pass the inclusive [0.10, 0.90] diagnostic. Regime discrimination is descriptive and does not define an exclusion or a further confirmatory gate.}
+\label{tab:validity}
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lllrlrr}
+\toprule
+Model & Regime & True flips/$n$ & True rate & Non-driver flips/$n$ & Non-driver rate & Difference \\
+\midrule
+DeepSeek & pooled & 1363/2421 & 0.5630 & 876/2421 & 0.3618 & 0.2012 \\
+DeepSeek & news & 491/1219 & 0.4028 & 632/1219 & 0.5185 & -0.1157 \\
+DeepSeek & momentum & 872/1202 & 0.7255 & 244/1202 & 0.2030 & 0.5225 \\
+Haiku & pooled & 595/1198 & 0.4967 & 374/1198 & 0.3122 & 0.1845 \\
+Haiku & news & 243/607 & 0.4003 & 241/607 & 0.3970 & 0.0033 \\
+Haiku & momentum & 352/591 & 0.5956 & 133/591 & 0.2250 & 0.3706 \\
+Luna & pooled & 660/1196 & 0.5518 & 423/1196 & 0.3537 & 0.1982 \\
+Luna & news & 334/606 & 0.5512 & 221/606 & 0.3647 & 0.1865 \\
+Luna & momentum & 326/590 & 0.5525 & 202/590 & 0.3424 & 0.2102 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

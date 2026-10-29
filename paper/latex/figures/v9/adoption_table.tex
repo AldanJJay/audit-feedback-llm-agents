@@ -1,0 +1,20 @@
+\begin{table}[tbp]
+\caption{Conditional primary-window adoption of the actual persisted label: pooled cited/exposed counts (proportions), rather than equal-seed means. Currently correct/stale refers to its agreement with the current driver; placebo labels can become correct after a switch.}
+\label{tab:adoption}
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lllll}
+\toprule
+Model & Condition & All exposed & Currently correct & Currently stale \\
+\midrule
+DeepSeek & label & 2393/2400 (0.9971) & 1644/1644 (1.0000) & 749/756 (0.9907) \\
+DeepSeek & placebo & 2391/2400 (0.9962) & 756/756 (1.0000) & 1635/1644 (0.9945) \\
+Haiku & label & 1041/1199 (0.8682) & 751/827 (0.9081) & 290/372 (0.7796) \\
+Haiku & placebo & 1026/1200 (0.8550) & 338/372 (0.9086) & 688/828 (0.8309) \\
+Luna & label & 1161/1199 (0.9683) & 807/827 (0.9758) & 354/372 (0.9516) \\
+Luna & placebo & 1158/1200 (0.9650) & 366/372 (0.9839) & 792/828 (0.9565) \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

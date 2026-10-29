@@ -1,0 +1,14 @@
+{
+  "type": "run_end",
+  "status": "complete",
+  "model": "deepseek-v4-flash",
+  "stage": "pilot",
+  "condition": "punitive",
+  "seed": 100,
+  "started_utc": "2026-10-27T08:50:34.988933+00:00",
+  "ended_utc": "2026-10-27T08:58:28.428261+00:00",
+  "calls": 468,
+  "prompt_tokens": 322704,
+  "completion_tokens": 8973,
+  "cost_usd": 0.056474544000000036
+}

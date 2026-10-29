@@ -1,0 +1,14 @@
+{
+  "evidence_label": "EXPLORATORY / not preregistered; descriptive, non-simultaneous intervals; no Holm",
+  "purpose": "Archival copy of frozen inputs; original bytes retain historical headings. Not a new preregistration.",
+  "preregistration_includes": "Original plan, both amendments, verbatim prompts and recorded PI answers",
+  "public_packaging_note": "Snapshot rebuilt from portable public copies; only preregistration and freeze-marker bytes are the unchanged development originals. Scientific results are unchanged; paths and public code provenance differ.",
+  "sha256": {
+    "preregistration/preregistration.md": "dd8eaf872b37593433b3168725962937394d1b5d1c4ef005fe415534c37235a1",
+    "preregistration/FROZEN.json": "95a0dd85b8fcd56ecf516dbbf9780c52f16d9a6a4b2e461f07eb9d6f4278952c",
+    "src/v2/analyze.py": "70e51cb1f84db9c6048ec67f6d3ddc6aa0474ec3ea8a17a86a080fa5d735b364",
+    "data/v2/analysis/confirm/results.json": "215b00ae9a84d1a707b44e88a10d09375aec24de249d57d33d16857b80d7eb87",
+    "data/v2/analysis/confirm/report.md": "1bc518a96ca9fa080e286ccbe11990905e2af525399a413c34ea55f5a9670280",
+    "results/confirmatory_results.md": "6f27d51fa566b24eca816ae5e4b7d2da109b650f22a66935dbe42b70f147aeda"
+  }
+}

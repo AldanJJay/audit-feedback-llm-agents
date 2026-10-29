@@ -1,0 +1,42 @@
+{
+  "input_commit": "4424f84b6248a13b18ab595f9dc9807b700fe7c6",
+  "analysis_source_sha256_matches_metadata": true,
+  "runs_checked": 200,
+  "mismatches": [],
+  "instrument_variants": {
+    "sign_flip": 47991,
+    "null_1": 4470
+  },
+  "null_mask_implementation": {
+    "deepseek-v4-flash": {
+      "runs_matching_conditional_mask": 100,
+      "runs_matching_registered_full_mask": 0
+    },
+    "anthropic/claude-haiku-5.5": {
+      "runs_matching_conditional_mask": 50,
+      "runs_matching_registered_full_mask": 0
+    },
+    "openai/gpt-6-luna": {
+      "runs_matching_conditional_mask": 50,
+      "runs_matching_registered_full_mask": 0
+    }
+  },
+  "null_calls_on_invalid_bases": [
+    {
+      "path": "data/v2/anthropic-claude-haiku-5.5/confirm/evidence_seed_203.jsonl",
+      "tick": 3,
+      "agent": 4,
+      "logged_null_calls": 1,
+      "null_flip": null
+    }
+  ],
+  "preregistration_matches_freeze": true,
+  "primary_family_size_per_model": {
+    "deepseek-v4-flash": 4,
+    "anthropic/claude-haiku-5.5": 4,
+    "openai/gpt-6-luna": 4
+  },
+  "figure_count": 6,
+  "sign_flip_perturbed_values_checked": 48174,
+  "all_sign_flip_values_negate_current_feature": true
+}

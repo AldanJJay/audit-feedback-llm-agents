@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "Please cite this study when using its code, data, or manuscript."
+type: software
+title: "Audit Feedback, Decisions, and Explanations in LLM Trading Agents"
+authors:
+  - family-names: Jay
+    given-names: Aldan
+    orcid: "https://orcid.org/0009-0006-3974-5490"
+  - family-names: Berlanga
+    given-names: Rafael
+    orcid: "https://orcid.org/0000-0002-9155-269X"
+date-released: 2026-10-29
+repository-code: "https://github.com/AldanJJay/audit-feedback-llm-agents"
+url: "https://github.com/AldanJJay/audit-feedback-llm-agents"
+license:
+  - MIT
+  - CC-BY-4.0
+preferred-citation:
+  type: unpublished
+  title: "Audit Feedback, Decisions, and Explanations in LLM Trading Agents"
+  authors:
+    - family-names: Jay
+      given-names: Aldan
+      orcid: "https://orcid.org/0009-0006-3974-5490"
+    - family-names: Berlanga
+      given-names: Rafael
+      orcid: "https://orcid.org/0000-0002-9155-269X"
+  year: 2026
+  notes: "Manuscript submitted to Future Internet (MDPI); preprint included in paper/."
+  url: "https://github.com/AldanJJay/audit-feedback-llm-agents"

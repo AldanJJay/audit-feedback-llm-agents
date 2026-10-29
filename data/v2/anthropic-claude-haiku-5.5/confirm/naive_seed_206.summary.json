@@ -1,0 +1,12 @@
+{
+  "type": "run_end",
+  "status": "complete",
+  "model": "anthropic/claude-haiku-5.5",
+  "stage": "confirm",
+  "condition": "naive",
+  "seed": 206,
+  "calls": 486,
+  "prompt_tokens": 443320,
+  "completion_tokens": 33160,
+  "cost_usd": 0.060912000000000015
+}

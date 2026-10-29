@@ -1,0 +1,12 @@
+{
+  "type": "run_end",
+  "status": "complete",
+  "model": "deepseek-v4-flash",
+  "stage": "confirm",
+  "condition": "evidence",
+  "seed": 209,
+  "calls": 500,
+  "prompt_tokens": 399945,
+  "completion_tokens": 9618,
+  "cost_usd": 0.05802980400000008
+}

@@ -1,0 +1,14 @@
+{
+  "type": "run_end",
+  "status": "complete",
+  "model": "deepseek-v4-flash",
+  "stage": "calib",
+  "condition": "naive",
+  "seed": 100,
+  "started_utc": "2026-10-27T09:05:35.704207+00:00",
+  "ended_utc": "2026-10-27T09:29:08.109979+00:00",
+  "calls": 1380,
+  "prompt_tokens": 923706,
+  "completion_tokens": 27196,
+  "cost_usd": 0.118538808
+}

@@ -1,0 +1,9 @@
+{
+  "commit": "72d05151df3fd1944fb009dda7506707ff455c82",
+  "prereg_sha256": "dd8eaf872b37593433b3168725962937394d1b5d1c4ef005fe415534c37235a1",
+  "pi_name": "Aldan Jay",
+  "date": "2026-10-27",
+  "amendments": ["Amendment 1 — 2026-10-27", "Amendment 2 — 2026-10-27 (budget only)"],
+  "previous_freeze": {"commit": "c1833938a0266c015df875c6f6f9998ed9387a8b", "prereg_sha256": "2fcdf5851e1f005ee49b7e24237b39c315b97e14c280cf193234296e9dd1544a"},
+  "frozen_by": "coordinator (Claude), on explicit PI approval in the working session"
+}

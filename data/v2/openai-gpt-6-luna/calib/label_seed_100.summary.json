@@ -1,0 +1,14 @@
+{
+  "type": "run_end",
+  "status": "complete",
+  "model": "openai/gpt-6-luna",
+  "stage": "calib",
+  "condition": "label",
+  "seed": 100,
+  "started_utc": "2026-10-27T10:21:44.095772+00:00",
+  "ended_utc": "2026-10-27T10:50:07.727567+00:00",
+  "calls": 1380,
+  "prompt_tokens": 923942,
+  "completion_tokens": 34101,
+  "cost_usd": 0.10944470000000203
+}

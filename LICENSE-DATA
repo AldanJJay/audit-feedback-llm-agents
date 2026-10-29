@@ -1,0 +1,21 @@
+Copyright (c) 2026 Aldan Jay and Rafael Berlanga
+
+The original study materials in data/, preregistration/, results/, and paper/
+are licensed under the Creative Commons Attribution 4.0 International License
+(CC BY 4.0; SPDX: CC-BY-4.0).
+
+You may share and adapt these materials for any purpose, including commercially,
+provided you give appropriate credit, provide a link to the license, and indicate
+if changes were made. Do not imply endorsement by the authors or impose additional
+restrictions. The license provides no warranties.
+
+The full legal terms control and are available at:
+https://creativecommons.org/licenses/by/4.0/legalcode
+
+Attribution: Aldan Jay and Rafael Berlanga (2026), Audit Feedback, Decisions,
+and Explanations in LLM Trading Agents.
+Repository: https://github.com/AldanJJay/audit-feedback-llm-agents
+
+Third-party LaTeX class, bibliography styles and logos in paper/latex/Definitions/
+retain their original notices and applicable terms; they are not relicensed here.
+The software outside these material directories is covered by LICENSE (MIT).

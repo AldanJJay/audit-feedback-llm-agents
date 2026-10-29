@@ -1,0 +1,14 @@
+{
+  "type": "run_end",
+  "status": "complete",
+  "model": "anthropic/claude-haiku-5.5",
+  "stage": "calib",
+  "condition": "label",
+  "seed": 100,
+  "started_utc": "2026-10-27T10:04:49.281792+00:00",
+  "ended_utc": "2026-10-27T10:35:33.309087+00:00",
+  "calls": 1380,
+  "prompt_tokens": 1323980,
+  "completion_tokens": 139528,
+  "cost_usd": 0.20216200000000004
+}

@@ -1,0 +1,60 @@
+{
+  "evidence_label": "EXPLORATORY / not preregistered \u2014 revision verification",
+  "pytest": {
+    "command": ".venv/bin/pytest tests/v2 -q",
+    "passed": 122,
+    "new_synthetic_tests": 13,
+    "seconds": 32.78
+  },
+  "latex": {
+    "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/tmp/ns_b2_v10_build manuscript_v10.tex",
+    "pages": 23,
+    "undefined_references_or_citations": 0,
+    "overfull_boxes": 0,
+    "package_warnings": 0
+  },
+  "abstract_rendered_whitespace_words": 246,
+  "protected_archive_inputs_match": {
+    "preregistration/preregistration.md": true,
+    "preregistration/FROZEN.json": true,
+    "src/v2/analyze.py": true,
+    "data/v2/analysis/confirm/results.json": true,
+    "data/v2/analysis/confirm/report.md": true,
+    "results/confirmatory_results.md": true
+  },
+  "protected_tracked_files_modified": false,
+  "frozen_contrasts_reproduced": [
+    "deepseek-v4-flash/itt.H1_precision_evidence_minus_naive",
+    "deepseek-v4-flash/itt.H1_dependence_evidence_minus_naive",
+    "deepseek-v4-flash/itt.H3_sci_label",
+    "deepseek-v4-flash/itt.H4_sci_placebo",
+    "deepseek-v4-flash/incremental.evidence_minus_punitive_dependence",
+    "deepseek-v4-flash/exposure.label",
+    "deepseek-v4-flash/exposure.placebo",
+    "anthropic/claude-haiku-5.5/itt.H1_precision_evidence_minus_naive",
+    "anthropic/claude-haiku-5.5/itt.H1_dependence_evidence_minus_naive",
+    "anthropic/claude-haiku-5.5/itt.H3_sci_label",
+    "anthropic/claude-haiku-5.5/itt.H4_sci_placebo",
+    "anthropic/claude-haiku-5.5/incremental.evidence_minus_punitive_dependence",
+    "anthropic/claude-haiku-5.5/exposure.label",
+    "anthropic/claude-haiku-5.5/exposure.placebo",
+    "openai/gpt-6-luna/itt.H1_precision_evidence_minus_naive",
+    "openai/gpt-6-luna/itt.H1_dependence_evidence_minus_naive",
+    "openai/gpt-6-luna/itt.H3_sci_label",
+    "openai/gpt-6-luna/itt.H4_sci_placebo",
+    "openai/gpt-6-luna/incremental.evidence_minus_punitive_dependence",
+    "openai/gpt-6-luna/exposure.label",
+    "openai/gpt-6-luna/exposure.placebo"
+  ],
+  "script_sha256": "fde1745630c7d11dbb41c408580cef3cbc5d82fb40302faeef68a5a2fc877818",
+  "manuscript_sha256": "713d8684f38223677818354db8e13e74d4c4a417678cb3894c55763fe82d4cd0",
+  "pdf_sha256": "f15fc6549220aa234ce30f5bd15855e8b0e82fdd8b91baaa78f6fbafc9fadc7a",
+  "results_sha256": "e9b1821c1969453c30c542a0caa057449014bc9017c4d126894cd9f390956112",
+  "archive_sha256": "f46ff0016d8dc1a155cd51b6eb909b66ffa7d2071627ddd549f36958b28b8958",
+  "review_coverage": {
+    "major": 5,
+    "minor": 9
+  },
+  "api_calls": 0,
+  "public_packaging_note": "Historical development-repository verification of the original exploratory submission; hashes identify development artifacts, not the repackaged public files. See VERIFICATION.md for public release checks."
+}
