@@ -4,7 +4,7 @@ Can an audit change an AI agent's decisions, or does it mainly change the reason
 
 **Study status:** Submitted to Future Internet (MDPI), Special Issue 'Intelligent Agents and Their Application—2nd Edition', 2026; preprint PDF in [paper/](paper/audit_feedback_llm_agents.pdf).
 
-![Five audit conditions and the counterfactual measurement design](paper/latex/figures/v9/fig1_design.png)
+![Five audit conditions and the counterfactual measurement design](paper/latex/figures/fig1_design.png)
 
 ## Key findings
 
@@ -34,7 +34,7 @@ Non-frozen copies have portable paths and public-facing documentation. The scien
 ## Repository layout
 
 ```text
-paper/                         v15 main/supplement PDFs; matching compilable LaTeX sources
+paper/                         Article PDF and its compilable LaTeX source
 preregistration/               Six unchanged historical documents
 results/                       Interpretive results and collection run log
 src/v2/                        Simulation, prompts, attribution, clients and analyses
@@ -79,14 +79,7 @@ To compile the paper, install a TeX Live distribution with `latexmk`, `pdflatex`
 make paper
 ```
 
-This builds `paper/latex/main.pdf`. Compile the supplementary source separately with:
-
-```sh
-cd paper/latex
-latexmk -norc -pdf -interaction=nonstopmode -halt-on-error -file-line-error -no-shell-escape supplementary_v15.tex
-```
-
-The main paper has 10 pages, including references and back matter; [Supplementary Materials](paper/supplementary.pdf) have 14 pages and retain detailed methods, secondary and exploratory analyses, preliminary-phase records and reproducibility details. The supplied `paper/audit_feedback_llm_agents.pdf` and `paper/latex/main.tex` are the matching v15 manuscript, with the Future Internet Article structure, networked oversight context, public repository links and freeze provenance identified by the preregistration SHA-256 and `preregistration/FROZEN.json`.
+This builds `paper/latex/main.pdf`. The article is self-contained (12 pages, including references and back matter); there is no separate supplementary file. Detailed secondary and exploratory results are in [results/](results/) and `data/v2/analysis/`. The supplied `paper/audit_feedback_llm_agents.pdf` matches `paper/latex/main.tex`, with freeze provenance identified by the preregistration SHA-256 in `preregistration/FROZEN.json`.
 
 ## Rerunning collection
 
