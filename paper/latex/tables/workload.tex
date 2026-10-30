@@ -1,0 +1,17 @@
+\begin{table}[tbp]
+\caption{Networked audit-sidecar workload from the request log. USD: US dollars. Token means use calls with reported usage. Full probing includes the original call, both sign-flip re-asks and the conditional identical-prompt re-ask.}
+\label{tab:workload}
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabularx}{\linewidth}{@{}lXXXXXX@{}}
+\toprule
+Model & \shortstack[l]{Calls per\\{}fully probed\\{}decision} & \shortstack[l]{Attempts per\\{}assigned\\{}decision} & \shortstack[l]{Mean tokens\\{}input / output\\{}per call} & \shortstack[l]{USD per\\{}1,000 assigned\\{}decisions} & \shortstack[l]{Token\\{}multiplier} & \shortstack[l]{Cost\\{}multiplier} \\
+\midrule
+DeepSeek & 3.1859 & 2.1025 & 713.0 / 19.3 & 0.23 & 2.1036 & 1.7125 \\
+Haiku & 3.1852 & 2.0907 & 975.8 / 82.8 & 0.29 & 2.0964 & 2.1091 \\
+Luna & 3.1852 & 2.0915 & 683.4 / 25.1 & 0.17 & 2.0924 & 2.0938 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\raggedright\textit{Note.} All ticks and packages; fully probed calls are expected counts at the realized null share, before retries and invalid bases. Attempts, token and request-log cost multipliers are measured at the realized half-decision sampling; multipliers use original calls alone as the denominator. Attempt totals were 50,460, 25,088, 25,098 for DeepSeek, Haiku and Luna, respectively; USD per assigned decision was 0.00022658, 0.00029058, 0.00016940, in the same order. Traffic and request-log costs include all attempts. Token means exclude 5 Luna rows with missing usage and 2 zero-usage Hypertext Transfer Protocol (HTTP) 503 Service Unavailable attempts with conservative charges; recorded token totals are lower bounds. Request-log costs are not invoices: DeepSeek uses recorded cache counts and configured rates, with cache pricing lowering its cost multiplier; OpenRouter uses returned cost where available and configured token rates otherwise. Missing usage and failed attempts use conservative reservations.\par
+\end{table}

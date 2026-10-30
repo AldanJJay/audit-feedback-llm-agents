@@ -1,0 +1,326 @@
+{
+  "metadata": {
+    "script": "paper/latex/summarize_audit_traffic.py",
+    "python_version": "3.12.2",
+    "ledger": "data/v2/ledger.jsonl",
+    "ledger_sha256": "06370b453ecfb6a5a3329c4282a729817017ff7a4fb0e79d24ed124913df0bcf",
+    "analysis": "data/v2/analysis/exploratory/results.json",
+    "analysis_sha256": "cac41b406e7a5576a3884b80cd30e2709f8985c31c6b009f2649de42091a1a50",
+    "scope": "All ticks, all five conditions; confirmatory tags only; development excluded",
+    "units": "API ledger attempts, token counts, and US dollars from this run",
+    "latency": "Unavailable: ledger records only completion timestamps, without request-start times or durations; inter-completion gaps are not latencies because calls overlap",
+    "cost_caveat": "Recorded ledger cost is not an invoice: DeepSeek uses recorded cache counts and configured rates; OpenRouter uses returned usage.cost if present, otherwise configured token rates; missing usage and failed 5xx requests use conservative reservations",
+    "usage_caveat": "Token averages use calls with reported usage only; missing usage and error rows record zero tokens and are excluded from token-mean denominators; token totals are lower bounds",
+    "prospective_multiplier_caveat": "Full-audit call and equal-duration serial-latency multipliers are design extrapolations, not measured deployed latency; monetary/token multipliers below are measured aggregate ratios at the realized approximately half-decision sampling rate"
+  },
+  "models": {
+    "deepseek-v4-flash": {
+      "short_name": "DeepSeek",
+      "providers": {
+        "deepseek": 50460
+      },
+      "served_by": {
+        "unrecorded": 50460
+      },
+      "first_completion_utc": "2026-10-27T12:45:03.673835+00:00",
+      "last_completion_utc": "2026-10-27T16:11:56.841681+00:00",
+      "by_call_type": {
+        "base": {
+          "ledger_attempts": 24000,
+          "reported_usage_calls": 24000,
+          "usage_missing_calls": 0,
+          "error_attempts": 0,
+          "conservatively_billed_attempts": 0,
+          "recorded_prompt_tokens": 17101377,
+          "recorded_completion_tokens": 462767,
+          "mean_prompt_tokens_reported_usage_calls": 712.557375,
+          "mean_completion_tokens_reported_usage_calls": 19.281958333333332,
+          "ledger_cost_usd": 3.175453308,
+          "ledger_cost_usd_per_attempt": 0.0001323105545,
+          "conservative_cost_usd": 0.0
+        },
+        "sign_flip_news": {
+          "ledger_attempts": 12105,
+          "reported_usage_calls": 12105,
+          "usage_missing_calls": 0,
+          "error_attempts": 0,
+          "conservatively_billed_attempts": 0,
+          "recorded_prompt_tokens": 8631589,
+          "recorded_completion_tokens": 233120,
+          "mean_prompt_tokens_reported_usage_calls": 713.0598099958695,
+          "mean_completion_tokens_reported_usage_calls": 19.258157786038826,
+          "ledger_cost_usd": 1.021414236,
+          "ledger_cost_usd_per_attempt": 8.437953209417596e-05,
+          "conservative_cost_usd": 0.0
+        },
+        "sign_flip_momentum": {
+          "ledger_attempts": 12105,
+          "reported_usage_calls": 12105,
+          "usage_missing_calls": 0,
+          "error_attempts": 0,
+          "conservatively_billed_attempts": 0,
+          "recorded_prompt_tokens": 8631589,
+          "recorded_completion_tokens": 232222,
+          "mean_prompt_tokens_reported_usage_calls": 713.0598099958695,
+          "mean_completion_tokens_reported_usage_calls": 19.18397356464271,
+          "ledger_cost_usd": 1.052135676,
+          "ledger_cost_usd_per_attempt": 8.691744535315985e-05,
+          "conservative_cost_usd": 0.0
+        },
+        "null": {
+          "ledger_attempts": 2250,
+          "reported_usage_calls": 2250,
+          "usage_missing_calls": 0,
+          "error_attempts": 0,
+          "conservatively_billed_attempts": 0,
+          "recorded_prompt_tokens": 1612228,
+          "recorded_completion_tokens": 43277,
+          "mean_prompt_tokens_reported_usage_calls": 716.5457777777777,
+          "mean_completion_tokens_reported_usage_calls": 19.234222222222222,
+          "ledger_cost_usd": 0.188901888,
+          "ledger_cost_usd_per_attempt": 8.395639466666666e-05,
+          "conservative_cost_usd": 0.0
+        }
+      },
+      "all_calls": {
+        "ledger_attempts": 50460,
+        "reported_usage_calls": 50460,
+        "usage_missing_calls": 0,
+        "error_attempts": 0,
+        "conservatively_billed_attempts": 0,
+        "recorded_prompt_tokens": 35976783,
+        "recorded_completion_tokens": 971386,
+        "mean_prompt_tokens_reported_usage_calls": 712.9762782401903,
+        "mean_completion_tokens_reported_usage_calls": 19.250614347998415,
+        "ledger_cost_usd": 5.437905108,
+        "ledger_cost_usd_per_attempt": 0.00010776664898929846,
+        "conservative_cost_usd": 0.0
+      },
+      "sampling_and_multipliers": {
+        "assigned_decisions": 24000,
+        "cf_mask_selected": 12105,
+        "valid_base_probed_decisions": 12105,
+        "logical_feature_reasks": 24210,
+        "null_reasks": 2250,
+        "null_reasks_on_invalid_base": 0,
+        "cf_sampling_share_assigned": 0.504375,
+        "realized_null_share_of_cf_selected": 0.18587360594795538,
+        "realized_null_share_of_assigned": 0.09375,
+        "full_audit_expected_calls_per_decision_at_realized_null_share": 3.1858736059479553,
+        "full_audit_equal_duration_serial_latency_multiplier": 3.1858736059479553,
+        "realized_logical_calls_per_assigned_decision": 2.1025,
+        "realized_ledger_attempts_per_assigned_decision": 2.1025,
+        "measured_recorded_token_multiplier_vs_base_calls": 2.1036134183368116,
+        "measured_ledger_cost_multiplier_vs_base_calls": 1.7124815201345105,
+        "ledger_cost_usd_per_assigned_decision": 0.0002265793795,
+        "base_ledger_cost_usd_per_assigned_decision": 0.0001323105545
+      }
+    },
+    "anthropic/claude-haiku-5.5": {
+      "short_name": "Haiku",
+      "providers": {
+        "openrouter": 25088
+      },
+      "served_by": {
+        "anthropic": 25088
+      },
+      "first_completion_utc": "2026-10-27T12:45:03.828004+00:00",
+      "last_completion_utc": "2026-10-27T16:05:37.860518+00:00",
+      "by_call_type": {
+        "base": {
+          "ledger_attempts": 12000,
+          "reported_usage_calls": 12000,
+          "usage_missing_calls": 0,
+          "error_attempts": 0,
+          "conservatively_billed_attempts": 0,
+          "recorded_prompt_tokens": 11702451,
+          "recorded_completion_tokens": 966047,
+          "mean_prompt_tokens_reported_usage_calls": 975.20425,
+          "mean_completion_tokens_reported_usage_calls": 80.50391666666667,
+          "ledger_cost_usd": 1.6532686,
+          "ledger_cost_usd_per_attempt": 0.00013777238333333335,
+          "conservative_cost_usd": 0.0
+        },
+        "sign_flip_news": {
+          "ledger_attempts": 5989,
+          "reported_usage_calls": 5989,
+          "usage_missing_calls": 0,
+          "error_attempts": 0,
+          "conservatively_billed_attempts": 0,
+          "recorded_prompt_tokens": 5842191,
+          "recorded_completion_tokens": 505558,
+          "mean_prompt_tokens_reported_usage_calls": 975.4868926365002,
+          "mean_completion_tokens_reported_usage_calls": 84.4144264484889,
+          "ledger_cost_usd": 0.8369981,
+          "ledger_cost_usd_per_attempt": 0.00013975590248789448,
+          "conservative_cost_usd": 0.0
+        },
+        "sign_flip_momentum": {
+          "ledger_attempts": 5989,
+          "reported_usage_calls": 5989,
+          "usage_missing_calls": 0,
+          "error_attempts": 0,
+          "conservatively_billed_attempts": 0,
+          "recorded_prompt_tokens": 5842469,
+          "recorded_completion_tokens": 516821,
+          "mean_prompt_tokens_reported_usage_calls": 975.5333110702956,
+          "mean_completion_tokens_reported_usage_calls": 86.29504090833194,
+          "ledger_cost_usd": 0.8426574,
+          "ledger_cost_usd_per_attempt": 0.00014070085156119553,
+          "conservative_cost_usd": 0.0
+        },
+        "null": {
+          "ledger_attempts": 1110,
+          "reported_usage_calls": 1110,
+          "usage_missing_calls": 0,
+          "error_attempts": 0,
+          "conservatively_billed_attempts": 0,
+          "recorded_prompt_tokens": 1093203,
+          "recorded_completion_tokens": 89325,
+          "mean_prompt_tokens_reported_usage_calls": 984.8675675675676,
+          "mean_completion_tokens_reported_usage_calls": 80.47297297297297,
+          "ledger_cost_usd": 0.1539828,
+          "ledger_cost_usd_per_attempt": 0.00013872324324324325,
+          "conservative_cost_usd": 0.0
+        }
+      },
+      "all_calls": {
+        "ledger_attempts": 25088,
+        "reported_usage_calls": 25088,
+        "usage_missing_calls": 0,
+        "error_attempts": 0,
+        "conservatively_billed_attempts": 0,
+        "recorded_prompt_tokens": 24480314,
+        "recorded_completion_tokens": 2077751,
+        "mean_prompt_tokens_reported_usage_calls": 975.7778220663265,
+        "mean_completion_tokens_reported_usage_calls": 82.81851881377551,
+        "ledger_cost_usd": 3.4869069,
+        "ledger_cost_usd_per_attempt": 0.0001389870416135204,
+        "conservative_cost_usd": 0.0
+      },
+      "sampling_and_multipliers": {
+        "assigned_decisions": 12000,
+        "cf_mask_selected": 5995,
+        "valid_base_probed_decisions": 5989,
+        "logical_feature_reasks": 11978,
+        "null_reasks": 1110,
+        "null_reasks_on_invalid_base": 1,
+        "cf_sampling_share_assigned": 0.4995833333333333,
+        "realized_null_share_of_cf_selected": 0.18515429524603835,
+        "realized_null_share_of_assigned": 0.0925,
+        "full_audit_expected_calls_per_decision_at_realized_null_share": 3.1851542952460385,
+        "full_audit_equal_duration_serial_latency_multiplier": 3.1851542952460385,
+        "realized_logical_calls_per_assigned_decision": 2.0906666666666665,
+        "realized_ledger_attempts_per_assigned_decision": 2.0906666666666665,
+        "measured_recorded_token_multiplier_vs_base_calls": 2.0963862487881357,
+        "measured_ledger_cost_multiplier_vs_base_calls": 2.1090988481847415,
+        "ledger_cost_usd_per_assigned_decision": 0.00029057557500000004,
+        "base_ledger_cost_usd_per_assigned_decision": 0.00013777238333333335
+      }
+    },
+    "openai/gpt-6-luna": {
+      "short_name": "Luna",
+      "providers": {
+        "openrouter": 25098
+      },
+      "served_by": {
+        "openai": 25091,
+        "unrecorded": 2,
+        "None": 5
+      },
+      "first_completion_utc": "2026-10-27T12:45:04.053069+00:00",
+      "last_completion_utc": "2026-10-27T16:32:46.910858+00:00",
+      "by_call_type": {
+        "base": {
+          "ledger_attempts": 12001,
+          "reported_usage_calls": 11999,
+          "usage_missing_calls": 1,
+          "error_attempts": 1,
+          "conservatively_billed_attempts": 1,
+          "recorded_prompt_tokens": 8195327,
+          "recorded_completion_tokens": 301200,
+          "mean_prompt_tokens_reported_usage_calls": 683.0008334027835,
+          "mean_completion_tokens_reported_usage_calls": 25.10209184098675,
+          "ledger_cost_usd": 0.9709158,
+          "ledger_cost_usd_per_attempt": 8.090290809099242e-05,
+          "conservative_cost_usd": 0.00108
+        },
+        "sign_flip_news": {
+          "ledger_attempts": 5994,
+          "reported_usage_calls": 5990,
+          "usage_missing_calls": 3,
+          "error_attempts": 1,
+          "conservatively_billed_attempts": 1,
+          "recorded_prompt_tokens": 4092321,
+          "recorded_completion_tokens": 150624,
+          "mean_prompt_tokens_reported_usage_calls": 683.1921535893156,
+          "mean_completion_tokens_reported_usage_calls": 25.145909849749582,
+          "ledger_cost_usd": 0.4862694,
+          "ledger_cost_usd_per_attempt": 8.112602602602603e-05,
+          "conservative_cost_usd": 0.0021201
+        },
+        "sign_flip_momentum": {
+          "ledger_attempts": 5993,
+          "reported_usage_calls": 5992,
+          "usage_missing_calls": 1,
+          "error_attempts": 0,
+          "conservatively_billed_attempts": 0,
+          "recorded_prompt_tokens": 4093944,
+          "recorded_completion_tokens": 150609,
+          "mean_prompt_tokens_reported_usage_calls": 683.2349799732978,
+          "mean_completion_tokens_reported_usage_calls": 25.135013351134848,
+          "ledger_cost_usd": 0.4850839,
+          "ledger_cost_usd_per_attempt": 8.094174870682463e-05,
+          "conservative_cost_usd": 0.0005236
+        },
+        "null": {
+          "ledger_attempts": 1110,
+          "reported_usage_calls": 1110,
+          "usage_missing_calls": 0,
+          "error_attempts": 0,
+          "conservatively_billed_attempts": 0,
+          "recorded_prompt_tokens": 766392,
+          "recorded_completion_tokens": 27894,
+          "mean_prompt_tokens_reported_usage_calls": 690.4432432432433,
+          "mean_completion_tokens_reported_usage_calls": 25.12972972972973,
+          "ledger_cost_usd": 0.0905862,
+          "ledger_cost_usd_per_attempt": 8.16091891891892e-05,
+          "conservative_cost_usd": 0.0
+        }
+      },
+      "all_calls": {
+        "ledger_attempts": 25098,
+        "reported_usage_calls": 25091,
+        "usage_missing_calls": 5,
+        "error_attempts": 2,
+        "conservatively_billed_attempts": 2,
+        "recorded_prompt_tokens": 17147984,
+        "recorded_completion_tokens": 630327,
+        "mean_prompt_tokens_reported_usage_calls": 683.431668725838,
+        "mean_completion_tokens_reported_usage_calls": 25.12163724044478,
+        "ledger_cost_usd": 2.0328553,
+        "ledger_cost_usd_per_attempt": 8.099670491672644e-05,
+        "conservative_cost_usd": 0.0037237000000000004
+      },
+      "sampling_and_multipliers": {
+        "assigned_decisions": 12000,
+        "cf_mask_selected": 5995,
+        "valid_base_probed_decisions": 5993,
+        "logical_feature_reasks": 11986,
+        "null_reasks": 1110,
+        "null_reasks_on_invalid_base": 0,
+        "cf_sampling_share_assigned": 0.4995833333333333,
+        "realized_null_share_of_cf_selected": 0.18515429524603835,
+        "realized_null_share_of_assigned": 0.0925,
+        "full_audit_expected_calls_per_decision_at_realized_null_share": 3.1851542952460385,
+        "full_audit_equal_duration_serial_latency_multiplier": 3.1851542952460385,
+        "realized_logical_calls_per_assigned_decision": 2.0913333333333335,
+        "realized_ledger_attempts_per_assigned_decision": 2.0915,
+        "measured_recorded_token_multiplier_vs_base_calls": 2.0924209385787864,
+        "measured_ledger_cost_multiplier_vs_base_calls": 2.093750354047179,
+        "ledger_cost_usd_per_assigned_decision": 0.00016940460833333334,
+        "base_ledger_cost_usd_per_assigned_decision": 8.090965e-05
+      }
+    }
+  }
+}

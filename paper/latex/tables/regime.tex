@@ -1,0 +1,48 @@
+\begin{table}[tbp]
+\caption{Registered regime summaries (20 DeepSeek seeds, 10 Haiku, 10 Luna). Naive discrimination is true-driver minus opposite-driver sign-flip sensitivity in ticks 0--39; $n_j$ counts naive complete-probe decisions. P1--P4 use matched eligible ticks 20--39; their $n_j$ counts matched decisions per arm. P1/P2 (H1) compare evidence minus naive precision and true-driver sensitivity; P3 (H3) and P4 (H4) give label current-driver and false-label opposite-driver citation--sensitivity differences (CSD: citation change minus sensitivity change relative to naive). Estimates are equal-seed means; CI denotes a descriptive 95\% paired-seed bootstrap confidence interval. Raw $p$ values are diagnostic. $\dagger$ marks failed news discrimination or Luna P4 sign reversal.}
+\label{tab:regime}
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabularx}{\linewidth}{@{}lllXrr@{}}
+\toprule
+Model & Regime & Outcome & Estimate [95\% CI] & Raw $p$ & $n_j$ \\
+\midrule
+DeepSeek & news & Naive discrimination & -0.1190 [-0.1970, -0.0438]$^{\dagger}$ & -- & 1219 \\
+ &  & P1 & 0.0082 [-0.0319, 0.0494] & 0.7064 & 602 \\
+ &  & P2 & -0.0721 [-0.1401, -0.0050] & 0.0577 & 603 \\
+ &  & P3 & -0.1004 [-0.1727, -0.0238] & 0.0180 & 603 \\
+ &  & P4 & -0.1162 [-0.1771, -0.0545] & 0.0016 & 603 \\
+\midrule
+DeepSeek & momentum & Naive discrimination & 0.5224 [0.4471, 0.5918] & -- & 1202 \\
+ &  & P1 & -0.0348 [-0.0729, 0.0023] & 0.0985 & 601 \\
+ &  & P2 & -0.0493 [-0.0993, -0.0045] & 0.0614 & 604 \\
+ &  & P3 & 0.0271 [-0.0376, 0.0912] & 0.4320 & 604 \\
+ &  & P4 & -0.1503 [-0.2189, -0.0846] & 0.0004 & 604 \\
+\midrule
+Haiku & news & Naive discrimination & -0.0011 [-0.1007, 0.0999]$^{\dagger}$ & -- & 607 \\
+ &  & P1 & 0.0415 [-0.0201, 0.1020] & 0.2415 & 274 \\
+ &  & P2 & 0.0457 [-0.0055, 0.1074] & 0.1696 & 291 \\
+ &  & P3 & -0.0256 [-0.0852, 0.0430] & 0.4731 & 296 \\
+ &  & P4 & -0.0350 [-0.0976, 0.0312] & 0.3376 & 296 \\
+\midrule
+Haiku & momentum & Naive discrimination & 0.3700 [0.2792, 0.4589] & -- & 591 \\
+ &  & P1 & -0.0115 [-0.0793, 0.0513] & 0.7495 & 281 \\
+ &  & P2 & -0.0572 [-0.1577, 0.0405] & 0.3134 & 300 \\
+ &  & P3 & -0.0462 [-0.1338, 0.0261] & 0.3141 & 298 \\
+ &  & P4 & -0.0766 [-0.1550, -0.0023] & 0.0998 & 299 \\
+\midrule
+Luna & news & Naive discrimination & 0.1806 [0.0908, 0.2630] & -- & 606 \\
+ &  & P1 & -0.1076 [-0.1608, -0.0572] & 0.0037 & 292 \\
+ &  & P2 & -0.0309 [-0.1269, 0.0638] & 0.5564 & 293 \\
+ &  & P3 & 0.0730 [-0.0021, 0.1704] & 0.1493 & 292 \\
+ &  & P4 & -0.0765 [-0.1259, -0.0249]$^{\dagger}$ & 0.0204 & 295 \\
+\midrule
+Luna & momentum & Naive discrimination & 0.2131 [0.0701, 0.3413] & -- & 590 \\
+ &  & P1 & -0.1272 [-0.1720, -0.0826] & 0.0005 & 290 \\
+ &  & P2 & -0.1426 [-0.2063, -0.0833] & 0.0019 & 298 \\
+ &  & P3 & -0.1390 [-0.2306, -0.0468] & 0.0202 & 299 \\
+ &  & P4 & 0.1589 [0.0762, 0.2519]$^{\dagger}$ & 0.0082 & 299 \\
+\bottomrule
+\end{tabularx}
+\end{table}

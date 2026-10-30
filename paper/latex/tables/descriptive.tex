@@ -1,0 +1,28 @@
+\begin{table}[tbp]
+\caption{Absolute outcomes in ticks 20--39: seed means $\pm$ sample standard deviation (SD), with 20 DeepSeek seeds and 10 each for Haiku and Luna. All defined observations are used without matching across packages. $E$: environmental fidelity, or true-driver citation; $d_g$ and $d_{\neg g}$: true-driver and opposite-driver sign-flip sensitivity; $P$ and $Q$: restricted process alignment precision and recall. Citation requires valid bases; the other outcomes require complete probes, with nonempty cited sets for $P$ and action-changing sets for $Q$.}
+\label{tab:descriptive}
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabularx}{\linewidth}{@{}llXXXXX@{}}
+\toprule
+Model & Package & $E$ & $d_g$ & $d_{\neg g}$ & $P$ & $Q$ \\
+\midrule
+DeepSeek & naive & 0.8942$\pm$0.0560 & 0.5957$\pm$0.0761 & 0.3297$\pm$0.0509 & 0.5906$\pm$0.0671 & 0.9966$\pm$0.0079 \\
+DeepSeek & punitive & 0.9321$\pm$0.0352 & 0.6138$\pm$0.0819 & 0.3175$\pm$0.0681 & 0.5443$\pm$0.0595 & 0.9953$\pm$0.0119 \\
+DeepSeek & label & 0.9579$\pm$0.0320 & 0.7001$\pm$0.0846 & 0.2844$\pm$0.0974 & 0.5803$\pm$0.0430 & 0.9977$\pm$0.0059 \\
+DeepSeek & evidence & 0.8533$\pm$0.0834 & 0.5333$\pm$0.0858 & 0.3954$\pm$0.0795 & 0.5762$\pm$0.0899 & 0.9754$\pm$0.0285 \\
+DeepSeek & false-label & 0.9083$\pm$0.0373 & 0.4024$\pm$0.0863 & 0.5830$\pm$0.0891 & 0.5664$\pm$0.0424 & 0.9990$\pm$0.0044 \\
+Haiku & naive & 0.7258$\pm$0.0867 & 0.5352$\pm$0.1036 & 0.3003$\pm$0.0538 & 0.6514$\pm$0.0660 & 0.9348$\pm$0.0708 \\
+Haiku & punitive & 0.7100$\pm$0.0849 & 0.5760$\pm$0.0741 & 0.2956$\pm$0.0860 & 0.6843$\pm$0.0862 & 0.9315$\pm$0.0385 \\
+Haiku & label & 0.8032$\pm$0.0477 & 0.6652$\pm$0.0786 & 0.2725$\pm$0.0504 & 0.7280$\pm$0.0755 & 0.9583$\pm$0.0287 \\
+Haiku & evidence & 0.6832$\pm$0.0862 & 0.5291$\pm$0.1080 & 0.3232$\pm$0.0694 & 0.6654$\pm$0.0795 & 0.9378$\pm$0.0455 \\
+Haiku & false-label & 0.6233$\pm$0.0860 & 0.4059$\pm$0.0856 & 0.5048$\pm$0.0888 & 0.7210$\pm$0.0511 & 0.9481$\pm$0.0416 \\
+Luna & naive & 0.8183$\pm$0.0596 & 0.6099$\pm$0.0413 & 0.3187$\pm$0.0465 & 0.6694$\pm$0.0596 & 0.9753$\pm$0.0170 \\
+Luna & punitive & 0.8183$\pm$0.0638 & 0.5942$\pm$0.0697 & 0.3301$\pm$0.0822 & 0.6517$\pm$0.0556 & 0.9602$\pm$0.0331 \\
+Luna & label & 0.8916$\pm$0.0465 & 0.6873$\pm$0.0738 & 0.2737$\pm$0.0634 & 0.6703$\pm$0.0542 & 0.9825$\pm$0.0166 \\
+Luna & evidence & 0.8363$\pm$0.0717 & 0.5184$\pm$0.1030 & 0.3258$\pm$0.0727 & 0.5476$\pm$0.0565 & 0.9728$\pm$0.0238 \\
+Luna & false-label & 0.7625$\pm$0.0593 & 0.4285$\pm$0.0911 & 0.4576$\pm$0.0606 & 0.6058$\pm$0.0532 & 0.9682$\pm$0.0173 \\
+\bottomrule
+\end{tabularx}
+\end{table}

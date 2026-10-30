@@ -1,92 +1,79 @@
-# Public release verification — 2026-10-29
+# Public release verification — 2026-10-30
 
-The release was assembled in a separate directory from read-only development inputs, without model API calls. Only this new public repository was written. The original v13 manuscript PDF, six preregistration documents, all raw run records, and numerical findings were preserved.
+This update packages the final 15-page manuscript and its exploratory analyses. Validation used the existing Python 3.12.2 environment with the exact versions pinned in requirements.txt, CPU only, without provider requests. No commit or push was made during preparation.
 
-## 1. Fresh Python environment and tests
+## Offline tests and confirmatory reproduction
 
-```sh
-python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt pytest==9.1.1 statsmodels==0.15.0
-.venv/bin/python -m pytest tests/v2 -q
-.venv/bin/python -m pip check
-```
-
-Result: **121 passed**, with no dependency conflicts. Python 3.12.2; numpy 2.5.4; scipy 1.18.1; pandas 3.1.0; matplotlib 3.11.2; httpx 0.28.1; statsmodels 0.15.0; pytest 9.1.1. The requirements file pins those versions. Tests use mock HTTP transports and synthetic observations; they do not call model APIs.
-
-One development-only test of the reviewer gzip transport was removed because it imports `tools/review/`, which is explicitly outside the public release. Its import and unused gzip import were also removed. All remaining study tests are included. The test environment and generated caches are removed from the final release folder after verification.
-
-## 2. Exact offline scientific reproduction
+From the repository root, after installing requirements.txt into a local virtual environment:
 
 ```sh
+.venv/bin/python -m pytest -q
+.venv/bin/python -m pytest -q tests/v2/test_exploratory_analyses.py
 .venv/bin/python scripts/reproduce_analysis.py
 ```
 
-Result: **PASS: all scientific outputs and non-exempt metadata match exactly**, using all 200 completed confirmatory runs. This compares the entire parsed result object, not just the primary table: manifests, run summaries, primary and secondary statistics, mixed models, validity checks, null monitoring, coverage, and missingness all match. The script also writes the generated JSON, report and figures into a temporary directory and removes that directory after checking.
+Results: **131 passed in 35.20s** for the full suite, and **10 passed in 1.39s** for the focused exploratory checks. There are no pre-existing public-suite failures. Tests use mock providers and synthetic observations.
 
-Differences are limited to repository-root prefixes in paths and three execution-provenance fields: `executed_utc`, `analysis_code_sha256`, and `code_revision`. The committed results retain their historical execution time, development analysis checksum `1684d12aa9199a72bc706039c1fd3630b58237fbbb5e7da736deacdb14bcb1e8`, and development source revision `4424f84b6248a13b18ab595f9dc9807b700fe7c6`. The public analysis source checksum is `70e51cb1f84db9c6048ec67f6d3ddc6aa0474ec3ea8a17a86a080fa5d735b364`; its differences are portable preregistration lookups and public-facing docstrings/headings. The comparison script reports these provenance differences explicitly and requires exact equality for every other value.
+The confirmatory comparison reports **PASS: all scientific outputs and non-exempt metadata match exactly**, across all 200 completed runs. It normalizes repository-root prefixes and reports only the three expected execution-provenance differences: execution timestamp, analysis-source SHA-256 and Git revision. Every other parsed result field matches the recorded public confirmatory output. Temporary reproduction outputs are removed by the script.
 
-The rebuilt exploratory input archive passed ZIP CRC verification, all manifest SHA-256 checks, and byte-for-byte comparison against its current public input files. Its frozen plan and marker remain the unchanged originals. Its manifest explains the public repackaging; the adjacent historical validation record identifies its development-only provenance. No exploratory numerical estimates were changed.
+Environment: Python 3.12.2, numpy 2.5.4, scipy 1.18.1, pandas 3.1.0, matplotlib 3.11.2, statsmodels 0.15.0, httpx 0.28.1 and pytest 9.1.1.
 
-All 470 other included data files remain byte-identical to their development originals. Cost accounting is unchanged in all **126,877** main-ledger rows and **4** review-ledger rows: model, provider, cost and tag match row by row. The ledgers contain accounting fields only.
-
-## 3. Paper compilation
-
-From `paper/latex/`:
+## Exploratory and manuscript inputs
 
 ```sh
+.venv/bin/python src/v2/exploratory_analyses.py
+.venv/bin/python paper/latex/summarize_audit_traffic.py
+.venv/bin/python paper/latex/analyze_label_punitive.py
+.venv/bin/python paper/latex/generate_tables.py
+.venv/bin/python paper/latex/generate_figures.py
+pdftoppm -png -singlefile -r 150 paper/latex/figures/fig1_design.pdf paper/latex/figures/fig1_design
+```
+
+All commands pass offline. Consecutive exploratory runs reproduce all three main deliverables **byte for byte**:
+
+| File in data/v2/analysis/exploratory/ | SHA-256 |
+|---|---|
+| results.json | `cac41b406e7a5576a3884b80cd30e2709f8985c31c6b009f2649de42091a1a50` |
+| report.md | `a2d4831f5046aabae1b486b5bc036b3efac108e5c71db9137f3a2dff1fe9c7bc` |
+| prompt_and_dgp.md | `2d9671a817b6e554222dea5cb6e3846326755e6cc692c96f0f7a707b3a18f0f9` |
+
+Every scientific result and historical collection diagnostic matches the final-paper development outputs exactly. Differences are public paths, source and input-file hashes, a portable deviation pointer, and validation prose. The historical preregistration commit list is preserved as development provenance rather than inferred from public Git history. All non-metadata values in the workload and label-minus-punitive JSON match the final-paper inputs exactly.
+
+All six generated table inputs and both figure PDFs reproduce the final manuscript inputs **byte for byte**. Only referenced figure PDFs and the regenerated README design PNG are retained; the obsolete figure with the former metric name is removed. The optional decomposition preview PNG is not generated in this release.
+
+Earlier public packaging had omitted safe diagnostic fields from the accounting ledger. This update restores six `provider_mismatch` flags, five `usage_missing` flags and two HTTP `status_code` values across eight rows, solely from the recorded source. No error bodies, provider responses or credential material are added. All 126,877 rows retain their original order, timestamps, models, providers, tags, token counts and charged costs; these diagnostic flags allow exact recovery of the final-paper missing-usage and HTTP-error summaries.
+
+## Final paper
+
+```sh
+make paper
+# Equivalent, from paper/latex/:
 latexmk -norc -pdf -interaction=nonstopmode -halt-on-error -file-line-error -no-shell-escape main.tex
 ```
 
-Result: **PASS**, 23 pages; no unresolved references or citations and no overfull boxes. A harmless epstopdf warning states that shell escape is disabled; the bundled PDF logo assets supply the required graphics. Only referenced manuscript figures/tables, the README design PNG, references and Definitions are included. Generated build files are excluded and removed after verification.
+Result: **15 pages, zero undefined references/citations, zero overfull boxes**. The sole package warning is epstopdf noting that shell escape is disabled; bundled PDF logos supply the graphics. The supplied PDF is byte-identical to the final manuscript PDF. Extracted text from the in-place compiled PDF and supplied PDF is byte-identical using `pdftotext -layout`; PDF bytes can differ because of build metadata and the equivalent public-safe logo asset.
 
-`paper/audit_feedback_llm_agents.pdf` is byte-identical to the supplied `manuscript_v13.pdf`. The public LaTeX source has portable live repository links/paths and cleaned preparation prose, while preserving the historical data-availability statement. Its compiled PDF therefore differs from the separately preserved original preprint.
+Supplied final PDF SHA-256: `ed8c789ebb770ab7ca5168f25efbf0d24b5b564dade86fa7a0c90c85cf3d5854`.
 
-## 4. Preregistration integrity
+LaTeX build artifacts, caches, temporary comparison output and local verification logs are ignored by .gitignore. No build artifacts are among the changed/untracked release files. Existing public-safe template comments and equivalent logo streams are preserved, including the original third-party notices.
 
-All six files are byte-identical to their development sources. SHA-256:
+## Frozen preregistration
+
+The same six documents remain byte-identical to the previous public release; none was edited. The plan checksum matches `prereg_sha256` in FROZEN.json.
 
 | File | SHA-256 |
 |---|---|
-| preregistration.md | dd8eaf872b37593433b3168725962937394d1b5d1c4ef005fe415534c37235a1 |
-| FROZEN.json | 95a0dd85b8fcd56ecf516dbbf9780c52f16d9a6a4b2e461f07eb9d6f4278952c |
-| amendment_1_evidence.md | 570cb4440778331a5b8c8a5d0110bc4e4cec6627fcb5d29433e98fd66a6cd842 |
-| calibration_report.md | 5b02362e21c0caa6fa553de6a70108b3c22b806cebcaeaf748904e7f717a9dcf |
-| noise_report.md | a4f42abb4ab589a5d8517d9302424180e315ea33f76876ae09537c72c6444d72 |
-| research-contract-v2.yaml | c21e8e4d6410e9d3c62f88a910a24bb9e97f09171e54ccf0968b6952075fed1d |
+| FROZEN.json | `95a0dd85b8fcd56ecf516dbbf9780c52f16d9a6a4b2e461f07eb9d6f4278952c` |
+| amendment_1_evidence.md | `570cb4440778331a5b8c8a5d0110bc4e4cec6627fcb5d29433e98fd66a6cd842` |
+| calibration_report.md | `5b02362e21c0caa6fa553de6a70108b3c22b806cebcaeaf748904e7f717a9dcf` |
+| noise_report.md | `a4f42abb4ab589a5d8517d9302424180e315ea33f76876ae09537c72c6444d72` |
+| preregistration.md | `dd8eaf872b37593433b3168725962937394d1b5d1c4ef005fe415534c37235a1` |
+| research-contract-v2.yaml | `c21e8e4d6410e9d3c62f88a910a24bb9e97f09171e54ccf0968b6952075fed1d` |
 
-The plan checksum **matches `FROZEN.json`'s `prereg_sha256`**. The frozen marker's commit identifies the development repository; the collection ancestor guard is preserved and refuses a confirmatory run against this fresh public history.
+The freeze commit identifies the development repository. The collection ancestor guard remains unchanged and refuses confirmatory collection in this fresh public history. Deviations are disclosed separately in [results/deviations.md](results/deviations.md).
 
-## 5. Credential, path and codename scans
+## Public documentation and scans
 
-Scanned the release files, extracted PDF text, and every decompressed member of the exploratory ZIP. Checked provider-key prefixes, GitHub-token prefixes, labeled hexadecimal Gitea tokens, authorization-header credential literals, credential/environment-file references, local home-directory paths, internal hosts, and email addresses. Results: **zero keys/tokens, zero credential literals, zero local absolute paths, and zero non-author email addresses**. The only email addresses allowed are the manuscript authors' `jay@uji.es` and `berlanga@uji.es`. API environment-variable names are documented configuration, not secrets. Python environment accessors and environmental-fidelity metric names are ordinary identifiers, not environment-file references.
+The README uses the final paper's sign-flip sensitivity, citation–sensitivity difference and false-label terminology, corrected model-level conclusions, regime-specific instrument limitations and measured audit-sidecar workload. One traceability sentence maps the older registered names. CITATION.cff retains the manuscript title and author metadata, with release version 1.1.0 and date 2026-10-30.
 
-Third-party template contact emails were removed from comments without removing copyright/author notices. The MDPI EPS logo's encoded image data happened to contain 43 email-shaped strings and one codename-shaped string. Those encoded streams were rewrapped using whitespace only; decoding all four ASCII85 streams before and after verified identical image bytes. This removed the accidental textual matches without changing the graphic.
-
-The only internal-host exceptions are the development URLs in the preserved original manuscript PDF (two occurrences) and the explicitly retained historical data-availability statement in `paper/latex/main.tex` (one occurrence). These identify historical provenance. Live public repository references elsewhere point to the intended GitHub URL. No code comment contains IDE/assistant coordination instructions.
-
-The requested case-insensitive `ns-?b[12]` scan outside `preregistration/` has only the explained categories documented in README: `ns-b2-analysis-v1` schema plus its test/result copies; `nsb2:` accounting tags plus their writer/reader/test; historical manuscript repository/branch/path references; and the explanatory README/verification prose itself. The archive's original plan and marker naturally retain the same frozen codenames. No prior study's code, data, or old manuscript is included; `src/market.py` is the explicitly required shared dependency.
-
-## 6. Fresh public Git history
-
-Initialized a separate repository on `main`, with author/committer configured as `Aldan Jay <jay@uji.es>`. The release has exactly one initial commit with message:
-
-```text
-Initial public release: audit feedback and LLM agent decisions (preregistered study)
-```
-
-No remote is configured and nothing was pushed. The handoff reports the resulting commit ID, clean status, and `git rev-list --count HEAD` result. No development-repository Git commands or writes were performed.
-
-## 7. Inventory and public artifacts
-
-The handoff reports the final tracked-file count, payload bytes, and total on-disk repository size after removal of the temporary virtual environment, caches, build outputs and verification transcripts. The largest payload is the 83,331,275-byte confirmatory result JSON, below GitHub's 100 MiB per-file limit. README, MIT/CC BY notices, author ORCIDs in CITATION.cff, pinned requirements, a Makefile, and the temporary-output reproduction script are included.
-
-## README key-findings table
-
-| Model / contrast | Estimate | Holm p | Interpretation |
-|---|---:|---:|---|
-| DeepSeek P1: evidence − naive precision | -0.0137 | 0.3683 | Inconclusive; predicted positive |
-| DeepSeek P2: evidence − naive true-driver dependence | -0.0624 | 0.0140 | Negative, contrary to prediction |
-| DeepSeek P3: label SCI, current true driver | -0.0389 | 0.2727 | Inconclusive; predicted positive |
-| DeepSeek P4: placebo SCI, opposite current driver | -0.1341 | 4.179e-05 | Negative, contrary to prediction |
-| Haiku replication (P1 / P2 / P3 / P4) | 0.0163 / -0.0059 / -0.0354 / -0.0572 | 1.0000 / 1.0000 / 0.7625 / 0.2666 | No Holm-significant primary contrast |
-| Luna replication (P1 / P2 / P3 / P4) | -0.1198 / -0.0909 / -0.0333 / 0.0404 | 0.0007 / 0.0376 / 0.2883 / 0.2544 | Negative evidence effects on precision and true-driver dependence |
+All **15 local README links** resolve to existing files. `git diff --check` passes. The complete added/modified-file scan, including binary bytes and extracted PDF text, finds **zero credential-prefix/header, absolute home-path, internal-assistant, internal review-text or checkout-workflow matches** against the requested release patterns. No internal assessment files, submission archive or cover letter are included. Historical frozen documents remain untouched.

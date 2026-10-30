@@ -1,6 +1,6 @@
 # Audit feedback and LLM agent decisions
 
-Can an audit change an AI agent's decisions, or does it mainly change the reasons the agent gives? This preregistered study compares five audit conditions in a simulated trading market whose return driver switches between news and momentum. We reverse one input feature and ask for the decision again to measure behavioral sensitivity, then compare that sensitivity with the agent's stated reasons. Across a primary model and two replications, the results provide no corrected evidence for any predicted positive primary effect; agreement with an auditor does not establish that an explanation tracks the decision process.
+Can audit feedback change what LLM trading agents cite and how they act? This preregistered study compares five feedback packages in a simulated market alternating news and momentum drivers. True-driver sign-flip sensitivity measures whether an action changes when the current driver's sign is reversed; citation–sensitivity difference (CSD) measures citation change minus sensitivity change relative to naive. Across a primary model and two replications, no corrected primary result supports its predicted positive direction. Failed news-regime discrimination for two models limits interpretation as driver use. The final paper also reports request, token and cost workload for a networked audit sidecar.
 
 **Study status:** Submitted to Future Internet (MDPI), Special Issue 'Intelligent Agents and Their Application—2nd Edition', 2026; preprint PDF in [paper/](paper/audit_feedback_llm_agents.pdf).
 
@@ -8,18 +8,24 @@ Can an audit change an AI agent's decisions, or does it mainly change the reason
 
 ## Key findings
 
-Numbers below are copied exactly from [confirmatory_results.md](results/confirmatory_results.md). DeepSeek is the primary model (20 paired seeds); Haiku and Luna are independent replications (10 paired seeds each). Each model has a separate four-test Holm family, with two-sided alpha 0.05. SCI is the treatment-minus-naive change in citation rate minus the corresponding change in decision dependence.
+Numbers below match the [final paper](paper/audit_feedback_llm_agents.pdf) and [confirmatory results](results/confirmatory_results.md). DeepSeek is primary (20 paired seeds); Haiku and Luna are independent replications (10 each). Each model has a separate four-test Holm family with two-sided alpha 0.05.
+
+For traceability, CSD = the preregistration's SCI; false-label = its placebo condition.
 
 | Model / contrast | Estimate | Holm p | Interpretation |
 |---|---:|---:|---|
 | DeepSeek P1: evidence − naive precision | -0.0137 | 0.3683 | Inconclusive; predicted positive |
-| DeepSeek P2: evidence − naive true-driver dependence | -0.0624 | 0.0140 | Negative, contrary to prediction |
-| DeepSeek P3: label SCI, current true driver | -0.0389 | 0.2727 | Inconclusive; predicted positive |
-| DeepSeek P4: placebo SCI, opposite current driver | -0.1341 | 4.179e-05 | Negative, contrary to prediction |
+| DeepSeek P2: evidence − naive true-driver sign-flip sensitivity | -0.0624 | 0.0140 | Negative, contrary to prediction |
+| DeepSeek P3: label CSD, current true driver | -0.0389 | 0.2727 | Inconclusive; predicted positive |
+| DeepSeek P4: false-label CSD, opposite current driver | -0.1341 | 4.179e-05 | Negative, contrary to prediction |
 | Haiku replication (P1 / P2 / P3 / P4) | 0.0163 / -0.0059 / -0.0354 / -0.0572 | 1.0000 / 1.0000 / 0.7625 / 0.2666 | No Holm-significant primary contrast |
-| Luna replication (P1 / P2 / P3 / P4) | -0.1198 / -0.0909 / -0.0333 / 0.0404 | 0.0007 / 0.0376 / 0.2883 / 0.2544 | Negative evidence effects on precision and true-driver dependence |
+| Luna replication (P1 / P2 / P3 / P4) | -0.1198 / -0.0909 / -0.0333 / 0.0404 | 0.0007 / 0.0376 / 0.2883 / 0.2544 | Negative evidence effects on precision and true-driver sensitivity |
 
-A negative significant contrast does not support its predicted positive direction. An inconclusive contrast does not establish equivalence or the absence of an effect. The placebo contrast estimates the complete feedback package; it does not isolate label falsity or identify deceptive intent.
+The DeepSeek false-label CSD result was not statistically confirmed in the replications' corrected tests. A negative significant contrast opposes its predicted positive direction; an inconclusive contrast does not establish equivalence. False-label combines a truth-based verdict and fine with a contradictory, persistent label: it estimates the complete assigned package, without isolating label falsity or deceptive intent.
+
+The sign-flip instrument failed news-regime driver discrimination for DeepSeek and Haiku, despite passing the pooled true-driver sensitivity gate. At about half-decision probing, the networked audit-sidecar workload was 2.10 attempts per assigned decision for DeepSeek and 2.09 for each replication, with recorded costs per 1,000 assigned decisions of USD 0.23, 0.29 and 0.17. Latency was not recorded; these are workload measurements rather than deployed performance claims.
+
+The implemented evidence tables used at most five completed ticks rather than the registered eight. Null re-ask sampling also departed from the registered full-mask recipe. See [implementation deviations](results/deviations.md); the original data and frozen documents are preserved.
 
 ## Preregistration and provenance
 
@@ -27,23 +33,27 @@ The six documents in [preregistration/](preregistration/) are byte-identical cop
 
 The frozen documents retain the internal project codenames **NS-B1/NS-B2**, historical workflow descriptions, original paths such as `docs/ns-b2/`, and historical DRAFT headings. `FROZEN.json`'s commit `72d05151df3fd1944fb009dda7506707ff455c82` refers to the **development repository**, whose history is deliberately absent here. This repository has a fresh public history; these historical identifiers are not public commit IDs.
 
-The internal Python and data paths remain `src/v2` and `data/v2`. The legacy `ns-b2-analysis-v1` schema identifier, `nsb2:` cost-ledger tags, and optional `NS_B1_AUTH_JSON` environment variable remain for compatibility with recorded artifacts. These are the explained codename occurrences outside the frozen documents. The `v9` and `v10` figure directories contain only assets referenced by the current manuscript (plus the README design PNG); earlier manuscripts and their code/data are excluded.
+The internal Python and data paths remain `src/v2` and `data/v2`. The legacy `ns-b2-analysis-v1` schema identifier, `nsb2:` cost-ledger tags, and optional `NS_B1_AUTH_JSON` environment variable remain for compatibility with recorded artifacts. These are the explained codename occurrences outside the frozen documents. The paper source includes only the two referenced figures, six generated table inputs, and the README design PNG. Historical machine-readable output keys retain their registered names for compatibility.
 
 Non-frozen copies have portable paths and public-facing documentation. The scientific analysis is unchanged; source checksums change because documentation and preregistration lookup paths change. The exploratory input ZIP is rebuilt from these public copies, with current checksums and a packaging notice in its manifest and adjacent provenance file. Its historical development-validation JSON is explicitly labeled as historical; the current release checks are in [VERIFICATION.md](VERIFICATION.md).
 
 ## Repository layout
 
 ```text
-paper/                         Article PDF and its compilable LaTeX source
+paper/                         Final 15-page PDF
+paper/latex/                   Compilable main.tex, sources and four offline scripts
+paper/latex/figures/            Two referenced PDFs and README design PNG
+paper/latex/tables/             Six generated manuscript table inputs
 preregistration/               Six unchanged historical documents
-results/                       Interpretive results and collection run log
-src/v2/                        Simulation, prompts, attribution, clients and analyses
+results/                       Confirmatory results, collection log and deviations
+src/v2/                        Simulation, prompts, clients, confirmatory and exploratory analyses
 src/market.py                  Shared market dependency
 tests/v2/                      Offline study tests using mock providers
 data/v2/<model>/<stage>/       confirm, calib, noise, pilot and smoke records
 data/v2/deepseek-v4-flash/
   noise_quarantine/            Excluded overlapping-run incident records
 data/v2/analysis/confirm/      Recorded confirmatory JSON, report and figures
+data/v2/analysis/exploratory/  Final-paper diagnostics, prompts and workload summaries
 data/v2/analysis/
   confirm_exploratory_r12/     Explicitly exploratory analysis and input snapshot
 data/v2/*ledger.jsonl          Cost accounting only
@@ -59,7 +69,7 @@ From the repository root:
 ```sh
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
-.venv/bin/python -m pytest tests/v2 -q
+.venv/bin/python -m pytest -q
 .venv/bin/python scripts/reproduce_analysis.py
 ```
 
@@ -73,13 +83,27 @@ To deliberately regenerate the ordinary analysis output directory instead:
 
 This command overwrites the recorded generated output files and records the current execution provenance. Use the comparison script for routine verification.
 
-To compile the paper, install a TeX Live distribution with `latexmk`, `pdflatex`, BibTeX and the packages requested by the bundled MDPI class, then run:
+To regenerate the final paper's exploratory analyses and supporting inputs, without any provider requests:
+
+```sh
+.venv/bin/python -m pytest -q tests/v2/test_exploratory_analyses.py
+.venv/bin/python src/v2/exploratory_analyses.py
+.venv/bin/python paper/latex/summarize_audit_traffic.py
+.venv/bin/python paper/latex/analyze_label_punitive.py
+.venv/bin/python paper/latex/generate_tables.py
+.venv/bin/python paper/latex/generate_figures.py
+pdftoppm -png -singlefile -r 150 paper/latex/figures/fig1_design.pdf paper/latex/figures/fig1_design
+```
+
+These commands overwrite generated exploratory artifacts and manuscript inputs. The exploratory analysis asserts exact reproduction of every primary contrast and registered secondary value. With the pinned environment, repeated public regeneration of `results.json` is byte-identical; its source/path provenance describes the public packaging. Historical development commits remain provenance identifiers, independently of public Git history. Scientific estimates are unchanged from the final-paper inputs.
+
+To compile the paper, install TeX Live with `latexmk`, `pdflatex`, BibTeX and the packages requested by the bundled MDPI class, then run:
 
 ```sh
 make paper
 ```
 
-This builds `paper/latex/main.pdf`. The article is self-contained (12 pages, including references and back matter); there is no separate supplementary file. Detailed secondary and exploratory results are in [results/](results/) and `data/v2/analysis/`. The supplied `paper/audit_feedback_llm_agents.pdf` matches `paper/latex/main.tex`, with freeze provenance identified by the preregistration SHA-256 in `preregistration/FROZEN.json`.
+This builds `paper/latex/main.pdf`: **15 pages**, including references and back matter, with no undefined references or overfull boxes. The supplied `paper/audit_feedback_llm_agents.pdf` is the final manuscript PDF, and the bundled source, figures and tables reproduce its contents. Detailed secondary and exploratory outputs are in [results/](results/) and [data/v2/analysis/exploratory/](data/v2/analysis/exploratory/). Current release checks are in [VERIFICATION.md](VERIFICATION.md).
 
 ## Rerunning collection
 
