@@ -1,6 +1,43 @@
-# Public release verification — 2026-10-30
+# Public release verification — 2026-11-20
 
-This update packages the final 15-page manuscript and its exploratory analyses. Validation used the existing Python 3.12.2 environment with the exact versions pinned in requirements.txt, CPU only, without provider requests. No commit or push was made during preparation.
+This update adds post hoc diagnostics and a separately collected latency benchmark. The existing paper, preregistration, raw study data and generated outputs are preserved. Validation used Python 3.12.2 and the exact versions pinned in requirements.txt, CPU only, without provider requests. The full offline suite passes **170 tests in 45.74s**, compared with the unchanged baseline of **131 tests in 30.60s**; there are no pre-existing failures. No commit, push or tag change was made during preparation.
+
+## Post hoc analyses
+
+These additional diagnostics were not preregistered: regime-specific contrasts, citation specificity, label truth/adoption, evidence informativeness, perturbation/proxy strata, paired-seed power, market components, and citation ceilings. Regenerate offline:
+
+```sh
+.venv/bin/python src/v2/posthoc_analyses.py
+# Or: make posthoc
+```
+
+The script writes `data/v2/analysis/posthoc_analyses/results.json` and `report.md`, asserts exact registered primary reproduction, and uses deterministic resampling. All scientific JSON fields and the scientific report body match development exactly. Full byte identity to development is affected by the descriptive public name, the source checksum, the checksum of the already public-packaged confirmatory output, and public validation prose. No existing input or output is rewritten. Repeated public regeneration produces identical bytes.
+
+| Artifact | SHA-256 |
+|---|---|
+| results.json | `dfa33d8f878985dcd3a32c985537f730c9acc94d2cd6a9625bd5abda5b801472` |
+| report.md | `2b0f5d0a8ee4b39312677cebee78ee3625127c248b45eef4d5fba6683836e178` |
+
+The logging defect disclosed on 20 November 2026 is documented in [results/deviations.md](results/deviations.md). The per-row diagnostic `audit_selected` value is wrong; audits, fines and labels used the correct per-agent flag, and reported analyses do not use that diagnostic field.
+
+## Latency benchmark
+
+The post-collection benchmark ran on **19 November 2026**, from one client host, over approximately **17 minutes**: **1,260 requests**, approximately **USD 0.14**, and a separate `data/v2/latency_ledger.jsonl`. It was not preregistered. Full-run statistics exclude pilot rows. Re-summarize offline:
+
+```sh
+.venv/bin/python -m src.v2.latency_benchmark --summarize-only
+# Or: make latency-summary
+```
+
+Only the new benchmark summary and report are overwritten. Input hash keys are repository-relative and resolve to their recorded SHA-256 values. Every measurement and cost statistic matches the development summary. Requests, pilot/full stage records and the separate ledger are byte-identical to collection outputs. The approval record identifies the study maintainer without a terminal identifier; historical collection validation keeps its original code hashes explicitly labeled and points to this release's current tests. Repeated offline summaries are byte-identical. Single-host chronology, disjoint prompts and the short measurement window limit concurrency and tail-latency conclusions.
+
+Provider credentials are read exclusively from the documented `DEEPSEEK_API_KEY` and `OPENROUTER_API_KEY` environment variables. The public client no longer reads a credential-file fallback. No new statistical dependency or other change to existing modules was needed.
+
+The 39 additional tests cover the post hoc calculations and benchmark, including offline summarization, prompt replay, timing intervals, scheduling, retries, routing, budgets and environment-only credential lookup. All **538 protected existing tracked files** retain their baseline SHA-256, including the complete paper, six frozen documents, existing data and all existing outputs. All local README links resolve; the requested forbidden-content scan over every added/modified file has zero hits, and `git diff --check` passes. Citation metadata advances to version 1.2.0, dated 20 November 2026, following the prior release convention.
+
+## Previous release verification — 30 October 2026
+
+The remaining sections record the preceding manuscript release and its historical checks. The 170-test result above is the current full-suite validation.
 
 ## Offline tests and confirmatory reproduction
 

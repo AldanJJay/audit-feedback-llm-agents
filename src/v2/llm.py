@@ -166,11 +166,7 @@ def _api_key(provider):
     key = os.environ.get(env_name)
     if key:
         return key
-    auth_path = os.environ.get("NS_B1_AUTH_JSON")
-    if not auth_path:
-        raise RuntimeError(f"Set {env_name} or NS_B1_AUTH_JSON")
-    with open(auth_path, encoding="utf-8") as auth_file:
-        return json.load(auth_file)[provider]["key"]
+    raise RuntimeError(f"Set {env_name}")
 
 
 async def chat(messages, model="deepseek-v4-flash", *, temperature=0.0,

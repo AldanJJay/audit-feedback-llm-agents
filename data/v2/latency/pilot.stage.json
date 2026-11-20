@@ -1,0 +1,48 @@
+{
+  "stage": "pilot",
+  "status": "complete",
+  "start_utc": "2026-11-19T16:16:03.664825+00:00",
+  "dry_run": false,
+  "host": "BullSAIserverUbuntu",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "python": "3.12.2",
+  "versions": {
+    "httpx": "0.28.1",
+    "numpy": "2.5.4"
+  },
+  "full_counts_per_model": [
+    60,
+    20,
+    20
+  ],
+  "seed": 20261119,
+  "client_location": "Unverified physical host/egress location; container timezone is not geolocation",
+  "balances_before": {
+    "deepseek": {
+      "remaining_usd": 10.09,
+      "checked_utc": "2026-11-19T16:16:04.032668+00:00"
+    },
+    "openrouter": {
+      "remaining_usd": 11.421646828999997,
+      "checked_utc": "2026-11-19T16:16:04.119159+00:00"
+    }
+  },
+  "sample_plan": [
+    {
+      "concurrency": 1,
+      "schedule": "sequential",
+      "decisions_per_model": 5
+    }
+  ],
+  "end_utc": "2026-11-19T16:18:12.164676+00:00",
+  "balances_after": {
+    "deepseek": {
+      "remaining_usd": 10.09,
+      "checked_utc": "2026-11-19T16:18:12.466853+00:00"
+    },
+    "openrouter": {
+      "remaining_usd": 11.418383328999994,
+      "checked_utc": "2026-11-19T16:18:12.492334+00:00"
+    }
+  }
+}

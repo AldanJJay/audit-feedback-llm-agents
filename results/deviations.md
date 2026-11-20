@@ -21,3 +21,9 @@ The implemented draw schedule is paired across packages and independent of respo
 A selected invalid base also receives an identical-prompt null call and logs an undefined flip; Amendment 1 specified no null call for invalid bases. One selected invalid Haiku evidence base is recorded and excluded from the valid null denominator. Missing nulls never exclude otherwise eligible raw primary observations.
 
 These null deviations were disclosed in [confirmatory results, Collection implementation deviations](confirmatory_results.md#deviations-and-incidents). The exploratory script reconstructs the implemented schedule from each seed and verifies its agreement with the stored masks. Original runs, the freeze marker and the six frozen documents are preserved; no collection was repeated to repair these deviations.
+
+## 2026-11-20: per-row `audit_selected` logging defect
+
+The raw logs copied the last agent's `audit_selected` loop value into every decision row. This diagnostic field is incorrect. Audits, fines and feedback labels used the correct per-agent `audited` flag, and no reported analysis uses the defective field. The raw data are preserved unchanged.
+
+Offline reconstruction of the seed-fixed independent audit mask matches all **48,000** regime/draw records and all **19,200** persisted label values. Actual audit receipt is validity-gated: one planned Haiku label audit (seed 209, tick 25, agent 5) was skipped because its base response was invalid; its planned label repeated the already persisted label. Seed-defined current label-truth subgroups remain reconstructible, while outcome validity and eligibility remain post-treatment. Verification and mismatch counts are in the [post hoc report](../data/v2/analysis/posthoc_analyses/report.md) and [results](../data/v2/analysis/posthoc_analyses/results.json).

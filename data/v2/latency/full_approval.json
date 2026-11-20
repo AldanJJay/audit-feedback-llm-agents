@@ -1,0 +1,11 @@
+{
+  "approved_utc": "2026-11-19T16:19:57.979607+00:00",
+  "authorization": "One full-run process: 60/model at c1 split 30 sequential/30 parallel, 20/model at c4, 20/model at c8; same caps and dedicated ledger, no batch retries.",
+  "report_requirements": [
+    "End-to-end and HTTP attempt latency plus quantified client overhead",
+    "Parallel completion from measured schedule; label pilot estimates",
+    "UTC run window and single-client network location caveat",
+    "Invalid response share and provider routing deviations per model"
+  ],
+  "approved_by": "Study maintainer"
+}

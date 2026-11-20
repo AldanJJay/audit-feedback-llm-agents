@@ -23,7 +23,7 @@ For traceability, CSD = the preregistration's SCI; false-label = its placebo con
 
 The DeepSeek false-label CSD result was not statistically confirmed in the replications' corrected tests. A negative significant contrast opposes its predicted positive direction; an inconclusive contrast does not establish equivalence. False-label combines a truth-based verdict and fine with a contradictory, persistent label: it estimates the complete assigned package, without isolating label falsity or deceptive intent.
 
-The sign-flip instrument failed news-regime driver discrimination for DeepSeek and Haiku, despite passing the pooled true-driver sensitivity gate. At about half-decision probing, the networked audit-sidecar workload was 2.10 attempts per assigned decision for DeepSeek and 2.09 for each replication, with recorded costs per 1,000 assigned decisions of USD 0.23, 0.29 and 0.17. Latency was not recorded; these are workload measurements rather than deployed performance claims.
+The sign-flip instrument failed news-regime driver discrimination for DeepSeek and Haiku, despite passing the pooled true-driver sensitivity gate. At about half-decision probing, the networked audit-sidecar workload was 2.10 attempts per assigned decision for DeepSeek and 2.09 for each replication, with recorded costs per 1,000 assigned decisions of USD 0.23, 0.29 and 0.17. Latency was not recorded during confirmatory collection; a separate post-collection benchmark is described below.
 
 The implemented evidence tables used at most five completed ticks rather than the registered eight. Null re-ask sampling also departed from the registered full-mask recipe. See [implementation deviations](results/deviations.md); the original data and frozen documents are preserved.
 
@@ -31,9 +31,9 @@ The implemented evidence tables used at most five completed ticks rather than th
 
 The six documents in [preregistration/](preregistration/) are byte-identical copies from the development repository: the plan, freeze marker, amendment evidence, calibration report, noise report, and research contract. The plan includes both amendments and recorded PI answers. Its SHA-256 is `dd8eaf872b37593433b3168725962937394d1b5d1c4ef005fe415534c37235a1`, matching `FROZEN.json`.
 
-The frozen documents retain the internal project codenames **NS-B1/NS-B2**, historical workflow descriptions, original paths such as `docs/ns-b2/`, and historical DRAFT headings. `FROZEN.json`'s commit `72d05151df3fd1944fb009dda7506707ff455c82` refers to the **development repository**, whose history is deliberately absent here. This repository has a fresh public history; these historical identifiers are not public commit IDs.
+The frozen documents retain their historical project identifiers, workflow descriptions, original paths, and DRAFT headings. `FROZEN.json`'s commit `72d05151df3fd1944fb009dda7506707ff455c82` refers to the **development repository**, whose history is deliberately absent here. This repository has a fresh public history; these historical identifiers are not public commit IDs.
 
-The internal Python and data paths remain `src/v2` and `data/v2`. The legacy `ns-b2-analysis-v1` schema identifier, `nsb2:` cost-ledger tags, and optional `NS_B1_AUTH_JSON` environment variable remain for compatibility with recorded artifacts. These are the explained codename occurrences outside the frozen documents. The paper source includes only the two referenced figures, six generated table inputs, and the README design PNG. Historical machine-readable output keys retain their registered names for compatibility.
+The internal Python and data paths remain `src/v2` and `data/v2`. Historical schema identifiers and cost-ledger tags remain for compatibility with recorded artifacts. The paper source includes only the two referenced figures, six generated table inputs, and the README design PNG. Historical machine-readable output keys retain their registered names for compatibility.
 
 Non-frozen copies have portable paths and public-facing documentation. The scientific analysis is unchanged; source checksums change because documentation and preregistration lookup paths change. The exploratory input ZIP is rebuilt from these public copies, with current checksums and a packaging notice in its manifest and adjacent provenance file. Its historical development-validation JSON is explicitly labeled as historical; the current release checks are in [VERIFICATION.md](VERIFICATION.md).
 
@@ -54,6 +54,9 @@ data/v2/deepseek-v4-flash/
   noise_quarantine/            Excluded overlapping-run incident records
 data/v2/analysis/confirm/      Recorded confirmatory JSON, report and figures
 data/v2/analysis/exploratory/  Final-paper diagnostics, prompts and workload summaries
+data/v2/analysis/posthoc_analyses/ Additional post hoc diagnostics and report
+data/v2/latency/               Separate post-collection benchmark requests and summaries
+data/v2/latency_ledger.jsonl   Separate benchmark cost accounting
 data/v2/analysis/
   confirm_exploratory_r12/     Explicitly exploratory analysis and input snapshot
 data/v2/*ledger.jsonl          Cost accounting only
@@ -105,6 +108,32 @@ make paper
 
 This builds `paper/latex/main.pdf`: **15 pages**, including references and back matter, with no undefined references or overfull boxes. The supplied `paper/audit_feedback_llm_agents.pdf` is the final manuscript PDF, and the bundled source, figures and tables reproduce its contents. Detailed secondary and exploratory outputs are in [results/](results/) and [data/v2/analysis/exploratory/](data/v2/analysis/exploratory/). Current release checks are in [VERIFICATION.md](VERIFICATION.md).
 
+## Post hoc analyses
+
+These [additional analyses](data/v2/analysis/posthoc_analyses/report.md) were not preregistered. They examine regime-specific contrasts, citation specificity, current label truth and adoption, delivered evidence, perturbation magnitude and proxy agreement, paired-seed power, market components, and citation ceilings. They reproduce every registered pooled primary result exactly and use fixed-seed resampling; subgroup eligibility and descriptive uncertainty are documented in the report.
+
+Regenerate from the original recorded data, without provider requests:
+
+```sh
+.venv/bin/python src/v2/posthoc_analyses.py
+# Equivalent: make posthoc
+```
+
+This overwrites only `data/v2/analysis/posthoc_analyses/{results.json,report.md}`. Public provenance hashes describe the public source and existing confirmatory output; statistical values match the development analysis.
+
+## Latency benchmark
+
+This [post-collection benchmark](data/v2/latency/report.md) ran on **19 November 2026**, on a single host over approximately **17 minutes**, with **1,260 requests** and approximately **USD 0.14** recorded cost. It was not part of the preregistration. Its [separate cost ledger](data/v2/latency_ledger.jsonl) and request log preserve the original observations; full-run statistics exclude the pilot. Probes-only added latency excludes the base call. Fixed chronological schedules, disjoint prompts and one short measurement window limit interpretation of concurrency and tail latency.
+
+Re-summarize the recorded benchmark offline, without credentials or provider requests:
+
+```sh
+.venv/bin/python -m src.v2.latency_benchmark --summarize-only
+# Equivalent: make latency-summary
+```
+
+This overwrites only `data/v2/latency/{summary.json,report.md}` and records repository-relative input hash keys. Collection modes make paid requests and require the provider environment variables documented below; they are unnecessary for reproduction. Historical stage records and collection validation remain distinct from the current public release checks in [VERIFICATION.md](VERIFICATION.md).
+
 ## Rerunning collection
 
 Supply provider keys through the environment variables `DEEPSEEK_API_KEY` and `OPENROUTER_API_KEY`. For example, Bash can read them without placing the key values in shell history:
@@ -115,7 +144,7 @@ read -rsp 'OpenRouter API key: ' OPENROUTER_API_KEY; export OPENROUTER_API_KEY
 .venv/bin/python -m src.v2.simulate --model deepseek-v4-flash --stage smoke --dry-run
 ```
 
-For an optional external credential store, set `NS_B1_AUTH_JSON` to a file you manage outside the repository, with provider objects `deepseek` and `openrouter`, each containing a `key` field. There is no default credential-file path. Do not commit credential material.
+Provider credentials are read only from `DEEPSEEK_API_KEY` and `OPENROUTER_API_KEY`; no credential file is read. Do not commit credential material.
 
 For a new development collection, use a separate copy of the repository, archive/remove the existing run files in that copy so completed blocks are not skipped, and use the documented `--stage`, `--conditions` and `--seeds` options. A smoke collection after that preparation is:
 
@@ -123,7 +152,7 @@ For a new development collection, use a separate copy of the repository, archive
 .venv/bin/python -m src.v2.simulate --model deepseek-v4-flash --stage smoke --conditions naive --seeds 100
 ```
 
-Real collection makes paid API requests; none are required for offline reproduction. Recorded confirm-stage costs from the run log were **USD 5.438 DeepSeek**, **USD 3.487 Haiku**, and **USD 2.033 Luna**. Cumulative provider costs at confirm completion, including development, were **USD 6.381 DeepSeek** and **USD 7.184 OpenRouter**; review costs are recorded separately in `review_ledger.jsonl`. The client enforces a cumulative USD 8 cap per provider. Preserve the existing ledgers: a new collection needs an explicit new budget, and historical prices are not a quote for future runs.
+Real collection makes paid API requests; none are required for offline reproduction. Recorded confirm-stage costs from the run log were **USD 5.438 DeepSeek**, **USD 3.487 Haiku**, and **USD 2.033 Luna**. Cumulative provider costs at confirm completion, including development, were **USD 6.381 DeepSeek** and **USD 7.184 OpenRouter**; auxiliary model-assessment costs are recorded in a separate ledger. The client enforces a cumulative USD 8 cap per provider. Preserve the existing ledgers: a new collection needs an explicit new budget, and historical prices are not a quote for future runs.
 
 The confirm-stage freeze guard checks that the **development-repository commit** in `FROZEN.json` is an ancestor of the current revision. It intentionally refuses confirmation in this fresh public repository; the checksum and ancestor checks have not been bypassed. Rerunning collection is a **new study**, requiring a new preregistration, explicit budget and new freeze record in a separate study copy. Future provider outputs, aliases and service availability may differ.
 

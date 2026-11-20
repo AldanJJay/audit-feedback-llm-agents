@@ -1,0 +1,53 @@
+{
+  "checked_utc": "2026-11-19T16:34:41.412150+00:00",
+  "requests": 1260,
+  "audited_decisions": 315,
+  "unique_source_files_verified_unchanged": 113,
+  "ledger_records": 1260,
+  "checks": [
+    "Exact four-call protocol and logged prompt perturbations/null identity",
+    "Distinct deterministic pilot/full samples",
+    "Source SHA256 unchanged",
+    "Monotonic timing identities and nonnegative overhead",
+    "Base before all probes; sequential probes ordered",
+    "Audited decisions in flight never exceed group concurrency",
+    "Dedicated ledger totals equal request totals and satisfy both provider and aggregate caps",
+    "Both stages complete; no stage relaunched"
+  ],
+  "peak_audited_decisions_in_flight": {
+    "pilot:deepseek-v4-flash:c1:sequential": 1,
+    "pilot:anthropic/claude-haiku-5.5:c1:sequential": 1,
+    "pilot:openai/gpt-6-luna:c1:sequential": 1,
+    "full:deepseek-v4-flash:c1:sequential": 1,
+    "full:deepseek-v4-flash:c1:parallel": 1,
+    "full:deepseek-v4-flash:c4:parallel": 4,
+    "full:deepseek-v4-flash:c8:parallel": 8,
+    "full:anthropic/claude-haiku-5.5:c1:sequential": 1,
+    "full:anthropic/claude-haiku-5.5:c1:parallel": 1,
+    "full:anthropic/claude-haiku-5.5:c4:parallel": 4,
+    "full:anthropic/claude-haiku-5.5:c8:parallel": 8,
+    "full:openai/gpt-6-luna:c1:sequential": 1,
+    "full:openai/gpt-6-luna:c1:parallel": 1,
+    "full:openai/gpt-6-luna:c4:parallel": 4,
+    "full:openai/gpt-6-luna:c8:parallel": 8
+  },
+  "deviations": [
+    "Native DeepSeek charged cost cannot be directly retrieved per request; reported token/cache usage is priced with the unchanged study snapshot and labelled estimated",
+    "Physical single-client host/egress location is unverified and reported as such"
+  ],
+  "clarifications": [
+    "No prompt-state approximation was needed: every source portfolio was replayed and checked against logged wealth before selection",
+    "Measured sequential and parallel schedules use disjoint samples; arithmetic critical-path estimates remain clearly labelled",
+    "Light concurrency checks use bounded waves, with a partial final c8 wave; no steady-state throughput claim",
+    "Full run exactly matches approved 30 sequential plus 30 parallel c1, 20 c4 and 20 c8 decisions per model"
+  ],
+  "tests": {
+    "historical_benchmark": "7 passed at collection time",
+    "current_release": "See VERIFICATION.md for the current complete offline suite"
+  },
+  "code_sha256_at_collection": {
+    "src/v2/latency_benchmark.py": "f7e106df81b044f8c0369196e3e3505688cd18c57bdd3b3df0061ea67bd1c03f",
+    "tests/v2/test_latency_benchmark.py": "29a955ad86aa229479a990c5e66af43d0f0488e046e14e6dd77fb858bb2433b9"
+  },
+  "public_packaging": "Historical collection validation; source hashes identify the original collection implementation, before portable-path and public documentation changes."
+}

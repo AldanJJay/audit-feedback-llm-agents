@@ -1,0 +1,2123 @@
+{
+  "post_hoc_operational_only": true,
+  "seed": 20261119,
+  "stages": [
+    {
+      "stage": "pilot",
+      "status": "complete",
+      "start_utc": "2026-11-19T16:16:03.664825+00:00",
+      "dry_run": false,
+      "host": "BullSAIserverUbuntu",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "python": "3.12.2",
+      "versions": {
+        "httpx": "0.28.1",
+        "numpy": "2.5.4"
+      },
+      "full_counts_per_model": [
+        60,
+        20,
+        20
+      ],
+      "seed": 20261119,
+      "client_location": "Unverified physical host/egress location; container timezone is not geolocation",
+      "balances_before": {
+        "deepseek": {
+          "remaining_usd": 10.09,
+          "checked_utc": "2026-11-19T16:16:04.032668+00:00"
+        },
+        "openrouter": {
+          "remaining_usd": 11.421646828999997,
+          "checked_utc": "2026-11-19T16:16:04.119159+00:00"
+        }
+      },
+      "sample_plan": [
+        {
+          "concurrency": 1,
+          "schedule": "sequential",
+          "decisions_per_model": 5
+        }
+      ],
+      "end_utc": "2026-11-19T16:18:12.164676+00:00",
+      "balances_after": {
+        "deepseek": {
+          "remaining_usd": 10.09,
+          "checked_utc": "2026-11-19T16:18:12.466853+00:00"
+        },
+        "openrouter": {
+          "remaining_usd": 11.418383328999994,
+          "checked_utc": "2026-11-19T16:18:12.492334+00:00"
+        }
+      }
+    },
+    {
+      "stage": "full",
+      "status": "complete",
+      "start_utc": "2026-11-19T16:19:58.340707+00:00",
+      "dry_run": false,
+      "host": "BullSAIserverUbuntu",
+      "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+      "python": "3.12.2",
+      "versions": {
+        "httpx": "0.28.1",
+        "httpcore": "1.0.9",
+        "anyio": "4.15.1",
+        "numpy": "2.5.4"
+      },
+      "full_counts_per_model": [
+        60,
+        20,
+        20
+      ],
+      "seed": 20261119,
+      "client_location": "Unverified physical host/egress location; container timezone is not geolocation",
+      "balances_before": {
+        "deepseek": {
+          "remaining_usd": 10.09,
+          "checked_utc": "2026-11-19T16:19:58.734937+00:00"
+        },
+        "openrouter": {
+          "remaining_usd": 11.417128528999996,
+          "checked_utc": "2026-11-19T16:19:58.985669+00:00"
+        }
+      },
+      "sample_plan": [
+        {
+          "concurrency": 1,
+          "schedule": "sequential",
+          "decisions_per_model": 30
+        },
+        {
+          "concurrency": 1,
+          "schedule": "parallel",
+          "decisions_per_model": 30
+        },
+        {
+          "concurrency": 4,
+          "schedule": "parallel",
+          "decisions_per_model": 20
+        },
+        {
+          "concurrency": 8,
+          "schedule": "parallel",
+          "decisions_per_model": 20
+        }
+      ],
+      "end_utc": "2026-11-19T16:33:25.617946+00:00",
+      "balances_after": {
+        "deepseek": {
+          "remaining_usd": 10.07,
+          "checked_utc": "2026-11-19T16:33:25.939139+00:00"
+        },
+        "openrouter": {
+          "remaining_usd": 11.335973328999998,
+          "checked_utc": "2026-11-19T16:33:25.974367+00:00"
+        }
+      }
+    }
+  ],
+  "cost_by_provider_usd": {
+    "deepseek": 0.044888064,
+    "openrouter": 0.0956694
+  },
+  "main_statistics_stage": "full",
+  "models": {
+    "deepseek-v4-flash": {
+      "requests": 400,
+      "valid_requests": 400,
+      "complete_decisions": 100,
+      "latency_s": {
+        "n": 400,
+        "median": 0.7807993204332888,
+        "p90": 0.9998501245398075,
+        "p95": 1.061301141604781,
+        "max": 1.3607374359853566
+      },
+      "http_attempt_latency_s": {
+        "n": 400,
+        "median": 0.7727384460158646,
+        "p90": 0.9890330511145294,
+        "p95": 1.0538244027178731,
+        "max": 1.3465435691177845
+      },
+      "client_overhead_including_backoff_s": {
+        "n": 400,
+        "median": 0.0076544079929590225,
+        "p90": 0.014125710912048816,
+        "p95": 0.015026789903640746,
+        "max": 0.020092072430998087
+      },
+      "sequential_sum_s": {
+        "n": 100,
+        "median": 3.1997624188661575,
+        "p90": 3.518856549542398,
+        "p95": 3.7539365089498458,
+        "max": 4.615252309478819
+      },
+      "parallel_critical_path_s": {
+        "n": 100,
+        "median": 1.6991338443476707,
+        "p90": 1.9763233351521197,
+        "p95": 2.1166970202466473,
+        "max": 2.36050166701898
+      },
+      "sidecar_added_latency_s": {
+        "n": 100,
+        "median": 0.9811334756668657,
+        "p90": 2.575003899168223,
+        "p95": 2.7025545256910846,
+        "max": 2.875762681942433
+      },
+      "observed_audit_s": {
+        "n": 100,
+        "median": 1.784498411230743,
+        "p90": 3.3935085425153377,
+        "p95": 3.5095418881624934,
+        "max": 3.9749683761037886
+      },
+      "cost_usd": 0.042488112,
+      "probe_cost_usd": 0.025313916,
+      "cost_per_audited_decision_usd": 0.00042488112,
+      "probe_cost_per_audited_decision_usd": 0.00025313916,
+      "request_utc_window": {
+        "start": "2026-11-19T16:20:01.149191+00:00",
+        "end": "2026-11-19T16:22:45.415042+00:00"
+      },
+      "errors": 0,
+      "invalid_responses": 0,
+      "invalid_request_share": 0.0,
+      "invalid_response_share_among_returned": 0.0,
+      "provider_routing_deviations": 0,
+      "http_attempts": 400,
+      "retries": 0,
+      "count_429": 0,
+      "count_5xx": 0,
+      "error_rate": 0.0,
+      "rate_429": 0.0,
+      "action_changes_sanity_only": {
+        "news": {
+          "valid_pairs": 100,
+          "changes": 34,
+          "rate": 0.34
+        },
+        "momentum": {
+          "valid_pairs": 100,
+          "changes": 60,
+          "rate": 0.6
+        },
+        "null": {
+          "valid_pairs": 100,
+          "changes": 0,
+          "rate": 0.0
+        }
+      },
+      "by_stage_concurrency_schedule": {
+        "full:c1:parallel": {
+          "requests": 120,
+          "valid_requests": 120,
+          "complete_decisions": 30,
+          "latency_s": {
+            "n": 120,
+            "median": 0.7486388853285462,
+            "p90": 1.0006255929358305,
+            "p95": 1.1254540800815447,
+            "max": 1.2981006829068065
+          },
+          "http_attempt_latency_s": {
+            "n": 120,
+            "median": 0.7408040759619325,
+            "p90": 0.9897119886707515,
+            "p95": 1.1147065417375415,
+            "max": 1.293461473658681
+          },
+          "client_overhead_including_backoff_s": {
+            "n": 120,
+            "median": 0.0054004311095923185,
+            "p90": 0.011552602006122473,
+            "p95": 0.012503340863622725,
+            "max": 0.014009101781994104
+          },
+          "sequential_sum_s": {
+            "n": 30,
+            "median": 3.045041487319395,
+            "p90": 3.5017692589201035,
+            "p95": 3.6440562567440784,
+            "max": 4.615252309478819
+          },
+          "parallel_critical_path_s": {
+            "n": 30,
+            "median": 1.6271875409875065,
+            "p90": 1.8585703488904983,
+            "p95": 2.0078534875297915,
+            "max": 2.11398101830855
+          },
+          "sidecar_added_latency_s": {
+            "n": 30,
+            "median": 0.8182199595030397,
+            "p90": 1.1042510571889579,
+            "p95": 1.217594096018001,
+            "max": 1.3034042799845338
+          },
+          "observed_audit_s": {
+            "n": 30,
+            "median": 1.6289445089641958,
+            "p90": 1.8590790415648373,
+            "p95": 2.0123288986505936,
+            "max": 2.114203364122659
+          },
+          "cost_usd": 0.012675264,
+          "probe_cost_usd": 0.007548984,
+          "cost_per_audited_decision_usd": 0.0004225088,
+          "probe_cost_per_audited_decision_usd": 0.0002516328,
+          "request_utc_window": {
+            "start": "2026-11-19T16:21:40.184288+00:00",
+            "end": "2026-11-19T16:22:29.820677+00:00"
+          },
+          "errors": 0,
+          "invalid_responses": 0,
+          "invalid_request_share": 0.0,
+          "invalid_response_share_among_returned": 0.0,
+          "provider_routing_deviations": 0,
+          "http_attempts": 120,
+          "retries": 0,
+          "count_429": 0,
+          "count_5xx": 0,
+          "error_rate": 0.0,
+          "rate_429": 0.0,
+          "action_changes_sanity_only": {
+            "news": {
+              "valid_pairs": 30,
+              "changes": 10,
+              "rate": 0.3333333333333333
+            },
+            "momentum": {
+              "valid_pairs": 30,
+              "changes": 17,
+              "rate": 0.5666666666666667
+            },
+            "null": {
+              "valid_pairs": 30,
+              "changes": 0,
+              "rate": 0.0
+            }
+          },
+          "median_latency_inflation_vs_full_c1_parallel": 1.0,
+          "median_sidecar_inflation_vs_full_c1_parallel": 1.0
+        },
+        "full:c1:sequential": {
+          "requests": 120,
+          "valid_requests": 120,
+          "complete_decisions": 30,
+          "latency_s": {
+            "n": 120,
+            "median": 0.8006511675193906,
+            "p90": 1.0120963030029089,
+            "p95": 1.095252439007163,
+            "max": 1.2765251439996064
+          },
+          "http_attempt_latency_s": {
+            "n": 120,
+            "median": 0.790208816761151,
+            "p90": 0.998530090833083,
+            "p95": 1.0842039626091717,
+            "max": 1.265064985025674
+          },
+          "client_overhead_including_backoff_s": {
+            "n": 120,
+            "median": 0.01095497072674334,
+            "p90": 0.015443211467936636,
+            "p95": 0.016007704194635153,
+            "max": 0.020092072430998087
+          },
+          "sequential_sum_s": {
+            "n": 30,
+            "median": 3.284639089833945,
+            "p90": 3.692603861214593,
+            "p95": 3.763453496061265,
+            "max": 3.9723138995468616
+          },
+          "parallel_critical_path_s": {
+            "n": 30,
+            "median": 1.752328661037609,
+            "p90": 2.082452517654747,
+            "p95": 2.1983919052872807,
+            "max": 2.36050166701898
+          },
+          "sidecar_added_latency_s": {
+            "n": 30,
+            "median": 2.4538709006737918,
+            "p90": 2.774238458648324,
+            "p95": 2.798787798034027,
+            "max": 2.875762681942433
+          },
+          "observed_audit_s": {
+            "n": 30,
+            "median": 3.2864170118700713,
+            "p90": 3.694376120250672,
+            "p95": 3.7645380782429125,
+            "max": 3.9749683761037886
+          },
+          "cost_usd": 0.012875856,
+          "probe_cost_usd": 0.0076065479999999994,
+          "cost_per_audited_decision_usd": 0.0004291952,
+          "probe_cost_per_audited_decision_usd": 0.00025355159999999996,
+          "request_utc_window": {
+            "start": "2026-11-19T16:20:01.149191+00:00",
+            "end": "2026-11-19T16:21:40.184098+00:00"
+          },
+          "errors": 0,
+          "invalid_responses": 0,
+          "invalid_request_share": 0.0,
+          "invalid_response_share_among_returned": 0.0,
+          "provider_routing_deviations": 0,
+          "http_attempts": 120,
+          "retries": 0,
+          "count_429": 0,
+          "count_5xx": 0,
+          "error_rate": 0.0,
+          "rate_429": 0.0,
+          "action_changes_sanity_only": {
+            "news": {
+              "valid_pairs": 30,
+              "changes": 13,
+              "rate": 0.43333333333333335
+            },
+            "momentum": {
+              "valid_pairs": 30,
+              "changes": 17,
+              "rate": 0.5666666666666667
+            },
+            "null": {
+              "valid_pairs": 30,
+              "changes": 0,
+              "rate": 0.0
+            }
+          },
+          "median_latency_inflation_vs_full_c1_parallel": 1.0694757956207663,
+          "median_sidecar_inflation_vs_full_c1_parallel": 2.999035738707955
+        },
+        "full:c4:parallel": {
+          "requests": 80,
+          "valid_requests": 80,
+          "complete_decisions": 20,
+          "latency_s": {
+            "n": 80,
+            "median": 0.7828737804666162,
+            "p90": 1.0011600425932556,
+            "p95": 1.0253236407181248,
+            "max": 1.1752399299293756
+          },
+          "http_attempt_latency_s": {
+            "n": 80,
+            "median": 0.7762852655723691,
+            "p90": 0.9915560444816948,
+            "p95": 1.0184831621823833,
+            "max": 1.161042233929038
+          },
+          "client_overhead_including_backoff_s": {
+            "n": 80,
+            "median": 0.006714778719469905,
+            "p90": 0.013952741213142873,
+            "p95": 0.014151665661484004,
+            "max": 0.014978359919041395
+          },
+          "sequential_sum_s": {
+            "n": 20,
+            "median": 3.191004324471578,
+            "p90": 3.518764640484006,
+            "p95": 3.8131437741452827,
+            "max": 3.9126669871620834
+          },
+          "parallel_critical_path_s": {
+            "n": 20,
+            "median": 1.7022840899880975,
+            "p90": 1.9264446502551438,
+            "p95": 2.011848489753902,
+            "max": 2.234456724021584
+          },
+          "sidecar_added_latency_s": {
+            "n": 20,
+            "median": 0.8870083161164075,
+            "p90": 1.040085974894464,
+            "p95": 1.0479889069916681,
+            "max": 1.1829216708429158
+          },
+          "observed_audit_s": {
+            "n": 20,
+            "median": 1.704761068802327,
+            "p90": 1.9274098661728205,
+            "p95": 2.0183912987355144,
+            "max": 2.243037227075547
+          },
+          "cost_usd": 0.008510832,
+          "probe_cost_usd": 0.005073912,
+          "cost_per_audited_decision_usd": 0.00042554159999999997,
+          "probe_cost_per_audited_decision_usd": 0.0002536956,
+          "request_utc_window": {
+            "start": "2026-11-19T16:22:29.821486+00:00",
+            "end": "2026-11-19T16:22:39.575908+00:00"
+          },
+          "errors": 0,
+          "invalid_responses": 0,
+          "invalid_request_share": 0.0,
+          "invalid_response_share_among_returned": 0.0,
+          "provider_routing_deviations": 0,
+          "http_attempts": 80,
+          "retries": 0,
+          "count_429": 0,
+          "count_5xx": 0,
+          "error_rate": 0.0,
+          "rate_429": 0.0,
+          "action_changes_sanity_only": {
+            "news": {
+              "valid_pairs": 20,
+              "changes": 8,
+              "rate": 0.4
+            },
+            "momentum": {
+              "valid_pairs": 20,
+              "changes": 11,
+              "rate": 0.55
+            },
+            "null": {
+              "valid_pairs": 20,
+              "changes": 0,
+              "rate": 0.0
+            }
+          },
+          "median_latency_inflation_vs_full_c1_parallel": 1.0457295176739927,
+          "median_sidecar_inflation_vs_full_c1_parallel": 1.0840707389430437
+        },
+        "full:c8:parallel": {
+          "requests": 80,
+          "valid_requests": 80,
+          "complete_decisions": 20,
+          "latency_s": {
+            "n": 80,
+            "median": 0.7700716471299529,
+            "p90": 0.954023204976693,
+            "p95": 0.9946293962886557,
+            "max": 1.3607374359853566
+          },
+          "http_attempt_latency_s": {
+            "n": 80,
+            "median": 0.7644994640722871,
+            "p90": 0.9461842013057323,
+            "p95": 0.9873208553530276,
+            "max": 1.3465435691177845
+          },
+          "client_overhead_including_backoff_s": {
+            "n": 80,
+            "median": 0.006929745199158788,
+            "p90": 0.00863956548273567,
+            "p95": 0.013653324008919297,
+            "max": 0.015708401799201965
+          },
+          "sequential_sum_s": {
+            "n": 20,
+            "median": 3.1471201949752867,
+            "p90": 3.3988802884239706,
+            "p95": 3.518275359924883,
+            "max": 3.642772337887436
+          },
+          "parallel_critical_path_s": {
+            "n": 20,
+            "median": 1.6510280296206474,
+            "p90": 1.8111201263032854,
+            "p95": 1.8767075808485973,
+            "max": 2.209212501067668
+          },
+          "sidecar_added_latency_s": {
+            "n": 20,
+            "median": 0.8519306310918182,
+            "p90": 1.07520182877779,
+            "p95": 1.1292095835786315,
+            "max": 1.3607374359853566
+          },
+          "observed_audit_s": {
+            "n": 20,
+            "median": 1.6567928320728242,
+            "p90": 1.8123646419961006,
+            "p95": 1.8803192032035443,
+            "max": 2.209639919921756
+          },
+          "cost_usd": 0.00842616,
+          "probe_cost_usd": 0.005084472,
+          "cost_per_audited_decision_usd": 0.000421308,
+          "probe_cost_per_audited_decision_usd": 0.00025422359999999997,
+          "request_utc_window": {
+            "start": "2026-11-19T16:22:39.576965+00:00",
+            "end": "2026-11-19T16:22:45.415042+00:00"
+          },
+          "errors": 0,
+          "invalid_responses": 0,
+          "invalid_request_share": 0.0,
+          "invalid_response_share_among_returned": 0.0,
+          "provider_routing_deviations": 0,
+          "http_attempts": 80,
+          "retries": 0,
+          "count_429": 0,
+          "count_5xx": 0,
+          "error_rate": 0.0,
+          "rate_429": 0.0,
+          "action_changes_sanity_only": {
+            "news": {
+              "valid_pairs": 20,
+              "changes": 3,
+              "rate": 0.15
+            },
+            "momentum": {
+              "valid_pairs": 20,
+              "changes": 15,
+              "rate": 0.75
+            },
+            "null": {
+              "valid_pairs": 20,
+              "changes": 0,
+              "rate": 0.0
+            }
+          },
+          "median_latency_inflation_vs_full_c1_parallel": 1.0286289721539121,
+          "median_sidecar_inflation_vs_full_c1_parallel": 1.0412000113138933
+        }
+      }
+    },
+    "anthropic/claude-haiku-5.5": {
+      "requests": 400,
+      "valid_requests": 400,
+      "complete_decisions": 100,
+      "latency_s": {
+        "n": 400,
+        "median": 1.4038696934003383,
+        "p90": 2.4428654200397433,
+        "p95": 2.9397747116629027,
+        "max": 11.05604077456519
+      },
+      "http_attempt_latency_s": {
+        "n": 400,
+        "median": 1.390824553789571,
+        "p90": 2.4330791160464287,
+        "p95": 2.9318911758251485,
+        "max": 11.04404669534415
+      },
+      "client_overhead_including_backoff_s": {
+        "n": 400,
+        "median": 0.01282305526547134,
+        "p90": 0.0155086615588516,
+        "p95": 0.015895415865816175,
+        "max": 0.018882349133491516
+      },
+      "sequential_sum_s": {
+        "n": 100,
+        "median": 5.902493598638102,
+        "p90": 9.467034860327841,
+        "p95": 11.151400260021898,
+        "max": 16.34409883664921
+      },
+      "parallel_critical_path_s": {
+        "n": 100,
+        "median": 3.5058912716340274,
+        "p90": 5.863709505740556,
+        "p95": 7.382578428136173,
+        "max": 13.263031058944762
+      },
+      "sidecar_added_latency_s": {
+        "n": 100,
+        "median": 2.435771960997954,
+        "p90": 4.957648795703433,
+        "p95": 6.284145937324499,
+        "max": 11.05820507183671
+      },
+      "observed_audit_s": {
+        "n": 100,
+        "median": 4.118396039586514,
+        "p90": 7.300816484307874,
+        "p95": 10.96010602985043,
+        "max": 16.346157466061413
+      },
+      "cost_usd": 0.0576641,
+      "probe_cost_usd": 0.0434978,
+      "cost_per_audited_decision_usd": 0.000576641,
+      "probe_cost_per_audited_decision_usd": 0.00043497800000000004,
+      "request_utc_window": {
+        "start": "2026-11-19T16:22:45.415987+00:00",
+        "end": "2026-11-19T16:28:53.331554+00:00"
+      },
+      "errors": 0,
+      "invalid_responses": 0,
+      "invalid_request_share": 0.0,
+      "invalid_response_share_among_returned": 0.0,
+      "provider_routing_deviations": 0,
+      "http_attempts": 400,
+      "retries": 0,
+      "count_429": 0,
+      "count_5xx": 0,
+      "error_rate": 0.0,
+      "rate_429": 0.0,
+      "action_changes_sanity_only": {
+        "news": {
+          "valid_pairs": 100,
+          "changes": 34,
+          "rate": 0.34
+        },
+        "momentum": {
+          "valid_pairs": 100,
+          "changes": 53,
+          "rate": 0.53
+        },
+        "null": {
+          "valid_pairs": 100,
+          "changes": 5,
+          "rate": 0.05
+        }
+      },
+      "by_stage_concurrency_schedule": {
+        "full:c1:parallel": {
+          "requests": 120,
+          "valid_requests": 120,
+          "complete_decisions": 30,
+          "latency_s": {
+            "n": 120,
+            "median": 1.4325502021238208,
+            "p90": 2.2977939100004736,
+            "p95": 2.4518582789693024,
+            "max": 3.3115601795725524
+          },
+          "http_attempt_latency_s": {
+            "n": 120,
+            "median": 1.4183057355694473,
+            "p90": 2.2819950083270673,
+            "p95": 2.436483822437003,
+            "max": 3.2967220419086516
+          },
+          "client_overhead_including_backoff_s": {
+            "n": 120,
+            "median": 0.013045450206845999,
+            "p90": 0.015584068559110166,
+            "p95": 0.01590288358274847,
+            "max": 0.018882349133491516
+          },
+          "sequential_sum_s": {
+            "n": 30,
+            "median": 6.044547451660037,
+            "p90": 7.579273340851069,
+            "p95": 7.827682433184235,
+            "max": 9.687077782582492
+          },
+          "parallel_critical_path_s": {
+            "n": 30,
+            "median": 3.452539440477267,
+            "p90": 4.304244080372155,
+            "p95": 4.669145372207276,
+            "max": 4.988108740653843
+          },
+          "sidecar_added_latency_s": {
+            "n": 30,
+            "median": 1.7839618809521198,
+            "p90": 2.6618437734898186,
+            "p95": 3.001649491139687,
+            "max": 3.3189194947481155
+          },
+          "observed_audit_s": {
+            "n": 30,
+            "median": 3.455523464595899,
+            "p90": 4.311698884516955,
+            "p95": 4.670425049308687,
+            "max": 4.994620486628264
+          },
+          "cost_usd": 0.0174751,
+          "probe_cost_usd": 0.0133217,
+          "cost_per_audited_decision_usd": 0.0005825033333333333,
+          "probe_cost_per_audited_decision_usd": 0.00044405666666666666,
+          "request_utc_window": {
+            "start": "2026-11-19T16:26:06.547900+00:00",
+            "end": "2026-11-19T16:27:50.080919+00:00"
+          },
+          "errors": 0,
+          "invalid_responses": 0,
+          "invalid_request_share": 0.0,
+          "invalid_response_share_among_returned": 0.0,
+          "provider_routing_deviations": 0,
+          "http_attempts": 120,
+          "retries": 0,
+          "count_429": 0,
+          "count_5xx": 0,
+          "error_rate": 0.0,
+          "rate_429": 0.0,
+          "action_changes_sanity_only": {
+            "news": {
+              "valid_pairs": 30,
+              "changes": 9,
+              "rate": 0.3
+            },
+            "momentum": {
+              "valid_pairs": 30,
+              "changes": 16,
+              "rate": 0.5333333333333333
+            },
+            "null": {
+              "valid_pairs": 30,
+              "changes": 1,
+              "rate": 0.03333333333333333
+            }
+          },
+          "median_latency_inflation_vs_full_c1_parallel": 1.0,
+          "median_sidecar_inflation_vs_full_c1_parallel": 1.0
+        },
+        "full:c1:sequential": {
+          "requests": 120,
+          "valid_requests": 120,
+          "complete_decisions": 30,
+          "latency_s": {
+            "n": 120,
+            "median": 1.3585175585467368,
+            "p90": 2.498586974013597,
+            "p95": 3.9791349959792566,
+            "max": 10.833752813283354
+          },
+          "http_attempt_latency_s": {
+            "n": 120,
+            "median": 1.3450410801451653,
+            "p90": 2.483534903638065,
+            "p95": 3.966395393316634,
+            "max": 10.822958443313837
+          },
+          "client_overhead_including_backoff_s": {
+            "n": 120,
+            "median": 0.013317392906174064,
+            "p90": 0.01544164987280965,
+            "p95": 0.01564260795712471,
+            "max": 0.016482755541801453
+          },
+          "sequential_sum_s": {
+            "n": 30,
+            "median": 5.737775514833629,
+            "p90": 10.68151027262211,
+            "p95": 13.341989511135022,
+            "max": 16.34409883664921
+          },
+          "parallel_critical_path_s": {
+            "n": 30,
+            "median": 3.2236134600825608,
+            "p90": 6.746814976260067,
+            "p95": 10.272648380533777,
+            "max": 13.263031058944762
+          },
+          "sidecar_added_latency_s": {
+            "n": 30,
+            "median": 4.321259999880567,
+            "p90": 6.3217833168338995,
+            "p95": 7.240037612477316,
+            "max": 9.257241412997246
+          },
+          "observed_audit_s": {
+            "n": 30,
+            "median": 5.739710841095075,
+            "p90": 10.68332545766607,
+            "p95": 13.342669286159786,
+            "max": 16.346157466061413
+          },
+          "cost_usd": 0.0175246,
+          "probe_cost_usd": 0.0131351,
+          "cost_per_audited_decision_usd": 0.0005841533333333334,
+          "probe_cost_per_audited_decision_usd": 0.0004378366666666667,
+          "request_utc_window": {
+            "start": "2026-11-19T16:22:45.415987+00:00",
+            "end": "2026-11-19T16:26:06.547625+00:00"
+          },
+          "errors": 0,
+          "invalid_responses": 0,
+          "invalid_request_share": 0.0,
+          "invalid_response_share_among_returned": 0.0,
+          "provider_routing_deviations": 0,
+          "http_attempts": 120,
+          "retries": 0,
+          "count_429": 0,
+          "count_5xx": 0,
+          "error_rate": 0.0,
+          "rate_429": 0.0,
+          "action_changes_sanity_only": {
+            "news": {
+              "valid_pairs": 30,
+              "changes": 10,
+              "rate": 0.3333333333333333
+            },
+            "momentum": {
+              "valid_pairs": 30,
+              "changes": 15,
+              "rate": 0.5
+            },
+            "null": {
+              "valid_pairs": 30,
+              "changes": 0,
+              "rate": 0.0
+            }
+          },
+          "median_latency_inflation_vs_full_c1_parallel": 0.9483210825928982,
+          "median_sidecar_inflation_vs_full_c1_parallel": 2.422282698985846
+        },
+        "full:c4:parallel": {
+          "requests": 80,
+          "valid_requests": 80,
+          "complete_decisions": 20,
+          "latency_s": {
+            "n": 80,
+            "median": 1.592195315985009,
+            "p90": 2.780905071273446,
+            "p95": 3.0119740744354195,
+            "max": 11.05604077456519
+          },
+          "http_attempt_latency_s": {
+            "n": 80,
+            "median": 1.5848961400333792,
+            "p90": 2.771025882475078,
+            "p95": 2.9966677551856256,
+            "max": 11.04404669534415
+          },
+          "client_overhead_including_backoff_s": {
+            "n": 80,
+            "median": 0.012478896183893085,
+            "p90": 0.015633981628343462,
+            "p95": 0.01620090955402702,
+            "max": 0.018446085043251514
+          },
+          "sequential_sum_s": {
+            "n": 20,
+            "median": 7.2215745453722775,
+            "p90": 9.739615092286842,
+            "p95": 11.107962255086752,
+            "max": 15.261831626761705
+          },
+          "parallel_critical_path_s": {
+            "n": 20,
+            "median": 4.311519562965259,
+            "p90": 5.953623071638869,
+            "p95": 7.3246722047450055,
+            "max": 12.117263412568718
+          },
+          "sidecar_added_latency_s": {
+            "n": 20,
+            "median": 2.3240387495607138,
+            "p90": 3.7013504868373315,
+            "p95": 6.401173407025639,
+            "max": 11.05820507183671
+          },
+          "observed_audit_s": {
+            "n": 20,
+            "median": 4.3205264147836715,
+            "p90": 5.954850281216206,
+            "p95": 7.32573595317081,
+            "max": 12.119923795573413
+          },
+          "cost_usd": 0.0117548,
+          "probe_cost_usd": 0.0088612,
+          "cost_per_audited_decision_usd": 0.00058774,
+          "probe_cost_per_audited_decision_usd": 0.00044306,
+          "request_utc_window": {
+            "start": "2026-11-19T16:27:50.081182+00:00",
+            "end": "2026-11-19T16:28:25.766521+00:00"
+          },
+          "errors": 0,
+          "invalid_responses": 0,
+          "invalid_request_share": 0.0,
+          "invalid_response_share_among_returned": 0.0,
+          "provider_routing_deviations": 0,
+          "http_attempts": 80,
+          "retries": 0,
+          "count_429": 0,
+          "count_5xx": 0,
+          "error_rate": 0.0,
+          "rate_429": 0.0,
+          "action_changes_sanity_only": {
+            "news": {
+              "valid_pairs": 20,
+              "changes": 9,
+              "rate": 0.45
+            },
+            "momentum": {
+              "valid_pairs": 20,
+              "changes": 8,
+              "rate": 0.4
+            },
+            "null": {
+              "valid_pairs": 20,
+              "changes": 4,
+              "rate": 0.2
+            }
+          },
+          "median_latency_inflation_vs_full_c1_parallel": 1.11144120019285,
+          "median_sidecar_inflation_vs_full_c1_parallel": 1.30274013944757
+        },
+        "full:c8:parallel": {
+          "requests": 80,
+          "valid_requests": 80,
+          "complete_decisions": 20,
+          "latency_s": {
+            "n": 80,
+            "median": 1.272362899268046,
+            "p90": 2.430205055186525,
+            "p95": 2.742294280324131,
+            "max": 10.876871733926237
+          },
+          "http_attempt_latency_s": {
+            "n": 80,
+            "median": 1.2653527359943837,
+            "p90": 2.4228042736183855,
+            "p95": 2.735446889651939,
+            "max": 10.864557399880141
+          },
+          "client_overhead_including_backoff_s": {
+            "n": 80,
+            "median": 0.008905480848625302,
+            "p90": 0.014570246962830427,
+            "p95": 0.01591009271796793,
+            "max": 0.017141405027359724
+          },
+          "sequential_sum_s": {
+            "n": 20,
+            "median": 5.780677401693538,
+            "p90": 8.179769721673813,
+            "p95": 15.074061143654399,
+            "max": 15.1854666932486
+          },
+          "parallel_critical_path_s": {
+            "n": 20,
+            "median": 3.7390851606614888,
+            "p90": 5.49522452969105,
+            "p95": 11.270124593121,
+            "max": 12.10840663779527
+          },
+          "sidecar_added_latency_s": {
+            "n": 20,
+            "median": 1.9417742292862386,
+            "p90": 2.989496674342082,
+            "p95": 4.193451634491799,
+            "max": 10.876871733926237
+          },
+          "observed_audit_s": {
+            "n": 20,
+            "median": 3.7456877089571208,
+            "p90": 5.501701935566971,
+            "p95": 11.275280682882295,
+            "max": 12.1100083286874
+          },
+          "cost_usd": 0.0109096,
+          "probe_cost_usd": 0.0081798,
+          "cost_per_audited_decision_usd": 0.00054548,
+          "probe_cost_per_audited_decision_usd": 0.00040898999999999997,
+          "request_utc_window": {
+            "start": "2026-11-19T16:28:25.767727+00:00",
+            "end": "2026-11-19T16:28:53.331554+00:00"
+          },
+          "errors": 0,
+          "invalid_responses": 0,
+          "invalid_request_share": 0.0,
+          "invalid_response_share_among_returned": 0.0,
+          "provider_routing_deviations": 0,
+          "http_attempts": 80,
+          "retries": 0,
+          "count_429": 0,
+          "count_5xx": 0,
+          "error_rate": 0.0,
+          "rate_429": 0.0,
+          "action_changes_sanity_only": {
+            "news": {
+              "valid_pairs": 20,
+              "changes": 6,
+              "rate": 0.3
+            },
+            "momentum": {
+              "valid_pairs": 20,
+              "changes": 14,
+              "rate": 0.7
+            },
+            "null": {
+              "valid_pairs": 20,
+              "changes": 0,
+              "rate": 0.0
+            }
+          },
+          "median_latency_inflation_vs_full_c1_parallel": 0.8881803216262231,
+          "median_sidecar_inflation_vs_full_c1_parallel": 1.0884617266877321
+        }
+      }
+    },
+    "openai/gpt-6-luna": {
+      "requests": 400,
+      "valid_requests": 400,
+      "complete_decisions": 100,
+      "latency_s": {
+        "n": 400,
+        "median": 1.2735418735537678,
+        "p90": 1.7360669281333687,
+        "p95": 1.9619757573353116,
+        "max": 3.7316453787498176
+      },
+      "http_attempt_latency_s": {
+        "n": 400,
+        "median": 1.2613456568215042,
+        "p90": 1.7279206348583105,
+        "p95": 1.9458070158492764,
+        "max": 3.716312048956752
+      },
+      "client_overhead_including_backoff_s": {
+        "n": 400,
+        "median": 0.01268348516896367,
+        "p90": 0.016053600097075106,
+        "p95": 0.01642872579395771,
+        "max": 0.019452531822025776
+      },
+      "sequential_sum_s": {
+        "n": 100,
+        "median": 5.22969117667526,
+        "p90": 6.438787847897039,
+        "p95": 7.085128701454959,
+        "max": 9.37057605246082
+      },
+      "parallel_critical_path_s": {
+        "n": 100,
+        "median": 2.733046953100711,
+        "p90": 3.6819553527981044,
+        "p95": 3.847291958145796,
+        "max": 5.775580343790352
+      },
+      "sidecar_added_latency_s": {
+        "n": 100,
+        "median": 1.6637693336233497,
+        "p90": 3.9334791961126037,
+        "p95": 4.394855392468162,
+        "max": 6.350490698125213
+      },
+      "observed_audit_s": {
+        "n": 100,
+        "median": 3.1070682974532247,
+        "p90": 5.474760893173516,
+        "p95": 5.874114538612775,
+        "max": 8.49457305809483
+      },
+      "cost_usd": 0.033487,
+      "probe_cost_usd": 0.0251135,
+      "cost_per_audited_decision_usd": 0.00033487,
+      "probe_cost_per_audited_decision_usd": 0.000251135,
+      "request_utc_window": {
+        "start": "2026-11-19T16:28:53.332817+00:00",
+        "end": "2026-11-19T16:33:25.616800+00:00"
+      },
+      "errors": 0,
+      "invalid_responses": 0,
+      "invalid_request_share": 0.0,
+      "invalid_response_share_among_returned": 0.0,
+      "provider_routing_deviations": 0,
+      "http_attempts": 400,
+      "retries": 0,
+      "count_429": 0,
+      "count_5xx": 0,
+      "error_rate": 0.0,
+      "rate_429": 0.0,
+      "action_changes_sanity_only": {
+        "news": {
+          "valid_pairs": 100,
+          "changes": 48,
+          "rate": 0.48
+        },
+        "momentum": {
+          "valid_pairs": 100,
+          "changes": 42,
+          "rate": 0.42
+        },
+        "null": {
+          "valid_pairs": 100,
+          "changes": 6,
+          "rate": 0.06
+        }
+      },
+      "by_stage_concurrency_schedule": {
+        "full:c1:parallel": {
+          "requests": 120,
+          "valid_requests": 120,
+          "complete_decisions": 30,
+          "latency_s": {
+            "n": 120,
+            "median": 1.2133985415566713,
+            "p90": 1.6054104502778503,
+            "p95": 1.7671984244836494,
+            "max": 3.254936863668263
+          },
+          "http_attempt_latency_s": {
+            "n": 120,
+            "median": 1.2010596238542348,
+            "p90": 1.598212295677513,
+            "p95": 1.7588408763054757,
+            "max": 3.2397871180437505
+          },
+          "client_overhead_including_backoff_s": {
+            "n": 120,
+            "median": 0.01282684807665646,
+            "p90": 0.01609926871024072,
+            "p95": 0.016407024348154664,
+            "max": 0.01901786681264639
+          },
+          "sequential_sum_s": {
+            "n": 30,
+            "median": 4.96778172487393,
+            "p90": 6.081897136056797,
+            "p95": 6.617281935526989,
+            "max": 8.352078255731612
+          },
+          "parallel_critical_path_s": {
+            "n": 30,
+            "median": 2.6297193958889693,
+            "p90": 3.294366820249707,
+            "p95": 4.079797101230358,
+            "max": 4.4270911347121
+          },
+          "sidecar_added_latency_s": {
+            "n": 30,
+            "median": 1.3717865268699825,
+            "p90": 1.8338432700373235,
+            "p95": 2.0523091721581292,
+            "max": 2.8604019437916577
+          },
+          "observed_audit_s": {
+            "n": 30,
+            "median": 2.630037423921749,
+            "p90": 3.296661844151095,
+            "p95": 4.080852970597332,
+            "max": 4.43953423993662
+          },
+          "cost_usd": 0.0100476,
+          "probe_cost_usd": 0.0075327,
+          "cost_per_audited_decision_usd": 0.00033492,
+          "probe_cost_per_audited_decision_usd": 0.00025109,
+          "request_utc_window": {
+            "start": "2026-11-19T16:31:30.283087+00:00",
+            "end": "2026-11-19T16:32:54.309335+00:00"
+          },
+          "errors": 0,
+          "invalid_responses": 0,
+          "invalid_request_share": 0.0,
+          "invalid_response_share_among_returned": 0.0,
+          "provider_routing_deviations": 0,
+          "http_attempts": 120,
+          "retries": 0,
+          "count_429": 0,
+          "count_5xx": 0,
+          "error_rate": 0.0,
+          "rate_429": 0.0,
+          "action_changes_sanity_only": {
+            "news": {
+              "valid_pairs": 30,
+              "changes": 14,
+              "rate": 0.4666666666666667
+            },
+            "momentum": {
+              "valid_pairs": 30,
+              "changes": 11,
+              "rate": 0.36666666666666664
+            },
+            "null": {
+              "valid_pairs": 30,
+              "changes": 1,
+              "rate": 0.03333333333333333
+            }
+          },
+          "median_latency_inflation_vs_full_c1_parallel": 1.0,
+          "median_sidecar_inflation_vs_full_c1_parallel": 1.0
+        },
+        "full:c1:sequential": {
+          "requests": 120,
+          "valid_requests": 120,
+          "complete_decisions": 30,
+          "latency_s": {
+            "n": 120,
+            "median": 1.2431209494825453,
+            "p90": 1.70167472534813,
+            "p95": 1.9219445638125758,
+            "max": 2.3796533020213246
+          },
+          "http_attempt_latency_s": {
+            "n": 120,
+            "median": 1.228520590113476,
+            "p90": 1.68667456638068,
+            "p95": 1.9081431891070675,
+            "max": 2.366562120616436
+          },
+          "client_overhead_including_backoff_s": {
+            "n": 120,
+            "median": 0.0135487609077245,
+            "p90": 0.015961004747077824,
+            "p95": 0.016267352900467814,
+            "max": 0.019452531822025776
+          },
+          "sequential_sum_s": {
+            "n": 30,
+            "median": 5.205558913294226,
+            "p90": 6.002656963048503,
+            "p95": 6.181280675227754,
+            "max": 8.493132434319705
+          },
+          "parallel_critical_path_s": {
+            "n": 30,
+            "median": 2.701505358563736,
+            "p90": 3.367469679005444,
+            "p95": 3.5477821503533042,
+            "max": 4.523372718133032
+          },
+          "sidecar_added_latency_s": {
+            "n": 30,
+            "median": 3.8356576948426664,
+            "p90": 4.754278520448134,
+            "p95": 4.92343728437554,
+            "max": 6.350490698125213
+          },
+          "observed_audit_s": {
+            "n": 30,
+            "median": 5.20745813450776,
+            "p90": 6.0041193219367415,
+            "p95": 6.182759737456217,
+            "max": 8.49457305809483
+          },
+          "cost_usd": 0.0100502,
+          "probe_cost_usd": 0.0075369,
+          "cost_per_audited_decision_usd": 0.0003350066666666667,
+          "probe_cost_per_audited_decision_usd": 0.00025123,
+          "request_utc_window": {
+            "start": "2026-11-19T16:28:53.332817+00:00",
+            "end": "2026-11-19T16:31:30.281953+00:00"
+          },
+          "errors": 0,
+          "invalid_responses": 0,
+          "invalid_request_share": 0.0,
+          "invalid_response_share_among_returned": 0.0,
+          "provider_routing_deviations": 0,
+          "http_attempts": 120,
+          "retries": 0,
+          "count_429": 0,
+          "count_5xx": 0,
+          "error_rate": 0.0,
+          "rate_429": 0.0,
+          "action_changes_sanity_only": {
+            "news": {
+              "valid_pairs": 30,
+              "changes": 14,
+              "rate": 0.4666666666666667
+            },
+            "momentum": {
+              "valid_pairs": 30,
+              "changes": 17,
+              "rate": 0.5666666666666667
+            },
+            "null": {
+              "valid_pairs": 30,
+              "changes": 4,
+              "rate": 0.13333333333333333
+            }
+          },
+          "median_latency_inflation_vs_full_c1_parallel": 1.0244951736036727,
+          "median_sidecar_inflation_vs_full_c1_parallel": 2.7961039270406896
+        },
+        "full:c4:parallel": {
+          "requests": 80,
+          "valid_requests": 80,
+          "complete_decisions": 20,
+          "latency_s": {
+            "n": 80,
+            "median": 1.369146321201697,
+            "p90": 1.7885607090778648,
+            "p95": 2.0005921800620854,
+            "max": 3.7316453787498176
+          },
+          "http_attempt_latency_s": {
+            "n": 80,
+            "median": 1.3629079484380782,
+            "p90": 1.7753235460724683,
+            "p95": 1.9939949088729918,
+            "max": 3.716312048956752
+          },
+          "client_overhead_including_backoff_s": {
+            "n": 80,
+            "median": 0.010428707813844085,
+            "p90": 0.016239176690578463,
+            "p95": 0.016717159678228198,
+            "max": 0.016972876619547606
+          },
+          "sequential_sum_s": {
+            "n": 20,
+            "median": 5.296636212617159,
+            "p90": 7.033197034196929,
+            "p95": 8.026800490682946,
+            "max": 9.37057605246082
+          },
+          "parallel_critical_path_s": {
+            "n": 20,
+            "median": 2.9016293545719236,
+            "p90": 3.8759655389003465,
+            "p95": 4.456713778804989,
+            "max": 5.775580343790352
+          },
+          "sidecar_added_latency_s": {
+            "n": 20,
+            "median": 1.581434343708679,
+            "p90": 1.8512590531259783,
+            "p95": 2.4561215987429033,
+            "max": 3.7316453787498176
+          },
+          "observed_audit_s": {
+            "n": 20,
+            "median": 2.9067059755325317,
+            "p90": 3.8817398998886357,
+            "p95": 4.457022031303496,
+            "max": 5.777010309975594
+          },
+          "cost_usd": 0.0067127,
+          "probe_cost_usd": 0.0050364,
+          "cost_per_audited_decision_usd": 0.00033563500000000003,
+          "probe_cost_per_audited_decision_usd": 0.00025182,
+          "request_utc_window": {
+            "start": "2026-11-19T16:32:54.309740+00:00",
+            "end": "2026-11-19T16:33:14.837061+00:00"
+          },
+          "errors": 0,
+          "invalid_responses": 0,
+          "invalid_request_share": 0.0,
+          "invalid_response_share_among_returned": 0.0,
+          "provider_routing_deviations": 0,
+          "http_attempts": 80,
+          "retries": 0,
+          "count_429": 0,
+          "count_5xx": 0,
+          "error_rate": 0.0,
+          "rate_429": 0.0,
+          "action_changes_sanity_only": {
+            "news": {
+              "valid_pairs": 20,
+              "changes": 13,
+              "rate": 0.65
+            },
+            "momentum": {
+              "valid_pairs": 20,
+              "changes": 6,
+              "rate": 0.3
+            },
+            "null": {
+              "valid_pairs": 20,
+              "changes": 0,
+              "rate": 0.0
+            }
+          },
+          "median_latency_inflation_vs_full_c1_parallel": 1.1283566563754202,
+          "median_sidecar_inflation_vs_full_c1_parallel": 1.1528283101869006
+        },
+        "full:c8:parallel": {
+          "requests": 80,
+          "valid_requests": 80,
+          "complete_decisions": 20,
+          "latency_s": {
+            "n": 80,
+            "median": 1.3443438704125583,
+            "p90": 1.8098368612118068,
+            "p95": 1.9854483940172938,
+            "max": 2.405603243969381
+          },
+          "http_attempt_latency_s": {
+            "n": 80,
+            "median": 1.3320813165046275,
+            "p90": 1.7925590470898898,
+            "p95": 1.9703895378625018,
+            "max": 2.396040126681328
+          },
+          "client_overhead_including_backoff_s": {
+            "n": 80,
+            "median": 0.007973799714818597,
+            "p90": 0.014891721075400712,
+            "p95": 0.01617859387770295,
+            "max": 0.01758816186338663
+          },
+          "sequential_sum_s": {
+            "n": 20,
+            "median": 5.514875841327012,
+            "p90": 6.491405667737127,
+            "p95": 7.08512870145496,
+            "max": 7.198881318792701
+          },
+          "parallel_critical_path_s": {
+            "n": 20,
+            "median": 2.9181622373871505,
+            "p90": 3.7341308061499148,
+            "p95": 3.8060054253321143,
+            "max": 3.8078755270689726
+          },
+          "sidecar_added_latency_s": {
+            "n": 20,
+            "median": 1.5464724611956626,
+            "p90": 2.057704507885501,
+            "p95": 2.1432338738813996,
+            "max": 2.4119906327687204
+          },
+          "observed_audit_s": {
+            "n": 20,
+            "median": 2.918413681909442,
+            "p90": 3.737923443038017,
+            "p95": 3.808139727800153,
+            "max": 3.815545597113669
+          },
+          "cost_usd": 0.0066765,
+          "probe_cost_usd": 0.0050075,
+          "cost_per_audited_decision_usd": 0.000333825,
+          "probe_cost_per_audited_decision_usd": 0.000250375,
+          "request_utc_window": {
+            "start": "2026-11-19T16:33:14.838494+00:00",
+            "end": "2026-11-19T16:33:25.616800+00:00"
+          },
+          "errors": 0,
+          "invalid_responses": 0,
+          "invalid_request_share": 0.0,
+          "invalid_response_share_among_returned": 0.0,
+          "provider_routing_deviations": 0,
+          "http_attempts": 80,
+          "retries": 0,
+          "count_429": 0,
+          "count_5xx": 0,
+          "error_rate": 0.0,
+          "rate_429": 0.0,
+          "action_changes_sanity_only": {
+            "news": {
+              "valid_pairs": 20,
+              "changes": 7,
+              "rate": 0.35
+            },
+            "momentum": {
+              "valid_pairs": 20,
+              "changes": 8,
+              "rate": 0.4
+            },
+            "null": {
+              "valid_pairs": 20,
+              "changes": 1,
+              "rate": 0.05
+            }
+          },
+          "median_latency_inflation_vs_full_c1_parallel": 1.1079161745883566,
+          "median_sidecar_inflation_vs_full_c1_parallel": 1.127341923035403
+        }
+      }
+    }
+  },
+  "pilot_models": {
+    "deepseek-v4-flash": {
+      "requests": 20,
+      "valid_requests": 20,
+      "complete_decisions": 5,
+      "latency_s": {
+        "n": 20,
+        "median": 0.7887439646292478,
+        "p90": 0.9163967854343356,
+        "p95": 0.9444972954690457,
+        "max": 0.977171887177974
+      },
+      "http_attempt_latency_s": {
+        "n": 20,
+        "median": 0.7790254976134747,
+        "p90": 0.9056692448444665,
+        "p95": 0.9338802225887776,
+        "max": 0.9666443658061326
+      },
+      "client_overhead_including_backoff_s": {
+        "n": 20,
+        "median": 0.010644291993230581,
+        "p90": 0.011317545734345916,
+        "p95": 0.013646243326365949,
+        "max": 0.01607326650992036
+      },
+      "sequential_sum_s": {
+        "n": 5,
+        "median": 3.249453695025295,
+        "p90": 3.353933756519109,
+        "p95": 3.357256909739226,
+        "max": 3.360580062959343
+      },
+      "parallel_critical_path_s": {
+        "n": 5,
+        "median": 1.6719657657667994,
+        "p90": 1.7230463366024196,
+        "p95": 1.7379543128423394,
+        "max": 1.752862289082259
+      },
+      "sidecar_added_latency_s": {
+        "n": 5,
+        "median": 2.4901582840830088,
+        "p90": 2.6271054187789558,
+        "p95": 2.6466185949742793,
+        "max": 2.666131771169603
+      },
+      "observed_audit_s": {
+        "n": 5,
+        "median": 3.250026100780815,
+        "p90": 3.3544582496397197,
+        "p95": 3.357788187917322,
+        "max": 3.361118126194924
+      },
+      "cost_usd": 0.002399952,
+      "probe_cost_usd": 0.001310748,
+      "cost_per_audited_decision_usd": 0.0004799904,
+      "probe_cost_per_audited_decision_usd": 0.00026214960000000003,
+      "request_utc_window": {
+        "start": "2026-11-19T16:16:06.194122+00:00",
+        "end": "2026-11-19T16:16:22.347296+00:00"
+      },
+      "errors": 0,
+      "invalid_responses": 0,
+      "invalid_request_share": 0.0,
+      "invalid_response_share_among_returned": 0.0,
+      "provider_routing_deviations": 0,
+      "http_attempts": 20,
+      "retries": 0,
+      "count_429": 0,
+      "count_5xx": 0,
+      "error_rate": 0.0,
+      "rate_429": 0.0,
+      "action_changes_sanity_only": {
+        "news": {
+          "valid_pairs": 5,
+          "changes": 2,
+          "rate": 0.4
+        },
+        "momentum": {
+          "valid_pairs": 5,
+          "changes": 3,
+          "rate": 0.6
+        },
+        "null": {
+          "valid_pairs": 5,
+          "changes": 0,
+          "rate": 0.0
+        }
+      },
+      "by_stage_concurrency_schedule": {
+        "pilot:c1:sequential": {
+          "requests": 20,
+          "valid_requests": 20,
+          "complete_decisions": 5,
+          "latency_s": {
+            "n": 20,
+            "median": 0.7887439646292478,
+            "p90": 0.9163967854343356,
+            "p95": 0.9444972954690457,
+            "max": 0.977171887177974
+          },
+          "http_attempt_latency_s": {
+            "n": 20,
+            "median": 0.7790254976134747,
+            "p90": 0.9056692448444665,
+            "p95": 0.9338802225887776,
+            "max": 0.9666443658061326
+          },
+          "client_overhead_including_backoff_s": {
+            "n": 20,
+            "median": 0.010644291993230581,
+            "p90": 0.011317545734345916,
+            "p95": 0.013646243326365949,
+            "max": 0.01607326650992036
+          },
+          "sequential_sum_s": {
+            "n": 5,
+            "median": 3.249453695025295,
+            "p90": 3.353933756519109,
+            "p95": 3.357256909739226,
+            "max": 3.360580062959343
+          },
+          "parallel_critical_path_s": {
+            "n": 5,
+            "median": 1.6719657657667994,
+            "p90": 1.7230463366024196,
+            "p95": 1.7379543128423394,
+            "max": 1.752862289082259
+          },
+          "sidecar_added_latency_s": {
+            "n": 5,
+            "median": 2.4901582840830088,
+            "p90": 2.6271054187789558,
+            "p95": 2.6466185949742793,
+            "max": 2.666131771169603
+          },
+          "observed_audit_s": {
+            "n": 5,
+            "median": 3.250026100780815,
+            "p90": 3.3544582496397197,
+            "p95": 3.357788187917322,
+            "max": 3.361118126194924
+          },
+          "cost_usd": 0.002399952,
+          "probe_cost_usd": 0.001310748,
+          "cost_per_audited_decision_usd": 0.0004799904,
+          "probe_cost_per_audited_decision_usd": 0.00026214960000000003,
+          "request_utc_window": {
+            "start": "2026-11-19T16:16:06.194122+00:00",
+            "end": "2026-11-19T16:16:22.347296+00:00"
+          },
+          "errors": 0,
+          "invalid_responses": 0,
+          "invalid_request_share": 0.0,
+          "invalid_response_share_among_returned": 0.0,
+          "provider_routing_deviations": 0,
+          "http_attempts": 20,
+          "retries": 0,
+          "count_429": 0,
+          "count_5xx": 0,
+          "error_rate": 0.0,
+          "rate_429": 0.0,
+          "action_changes_sanity_only": {
+            "news": {
+              "valid_pairs": 5,
+              "changes": 2,
+              "rate": 0.4
+            },
+            "momentum": {
+              "valid_pairs": 5,
+              "changes": 3,
+              "rate": 0.6
+            },
+            "null": {
+              "valid_pairs": 5,
+              "changes": 0,
+              "rate": 0.0
+            }
+          },
+          "median_latency_inflation_vs_full_c1_parallel": null,
+          "median_sidecar_inflation_vs_full_c1_parallel": null
+        }
+      }
+    },
+    "anthropic/claude-haiku-5.5": {
+      "requests": 20,
+      "valid_requests": 20,
+      "complete_decisions": 5,
+      "latency_s": {
+        "n": 20,
+        "median": 1.096449236618355,
+        "p90": 1.9815117929596466,
+        "p95": 2.844867749698461,
+        "max": 3.828129441011697
+      },
+      "http_attempt_latency_s": {
+        "n": 20,
+        "median": 1.0843378088902682,
+        "p90": 1.970625890325756,
+        "p95": 2.833898120373488,
+        "max": 3.8173549748025835
+      },
+      "client_overhead_including_backoff_s": {
+        "n": 20,
+        "median": 0.010710793547332287,
+        "p90": 0.013642335310578346,
+        "p95": 0.013820700207725169,
+        "max": 0.014632151927798986
+      },
+      "sequential_sum_s": {
+        "n": 5,
+        "median": 4.971983831841499,
+        "p90": 7.053436100296676,
+        "p95": 7.254592006467282,
+        "max": 7.455747912637889
+      },
+      "parallel_critical_path_s": {
+        "n": 5,
+        "median": 2.8141919528134167,
+        "p90": 4.690256046690047,
+        "p95": 5.002633964456617,
+        "max": 5.315011882223189
+      },
+      "sidecar_added_latency_s": {
+        "n": 5,
+        "median": 3.8501357240602374,
+        "p90": 5.7777786525897685,
+        "p95": 5.873546428792179,
+        "max": 5.969314204994589
+      },
+      "observed_audit_s": {
+        "n": 5,
+        "median": 4.972679303959012,
+        "p90": 7.054152839258313,
+        "p95": 7.255281815025955,
+        "max": 7.456410790793598
+      },
+      "cost_usd": 0.0028735,
+      "probe_cost_usd": 0.0022392,
+      "cost_per_audited_decision_usd": 0.0005747,
+      "probe_cost_per_audited_decision_usd": 0.00044783999999999997,
+      "request_utc_window": {
+        "start": "2026-11-19T16:16:22.347535+00:00",
+        "end": "2026-11-19T16:16:49.882446+00:00"
+      },
+      "errors": 0,
+      "invalid_responses": 0,
+      "invalid_request_share": 0.0,
+      "invalid_response_share_among_returned": 0.0,
+      "provider_routing_deviations": 0,
+      "http_attempts": 20,
+      "retries": 0,
+      "count_429": 0,
+      "count_5xx": 0,
+      "error_rate": 0.0,
+      "rate_429": 0.0,
+      "action_changes_sanity_only": {
+        "news": {
+          "valid_pairs": 5,
+          "changes": 4,
+          "rate": 0.8
+        },
+        "momentum": {
+          "valid_pairs": 5,
+          "changes": 2,
+          "rate": 0.4
+        },
+        "null": {
+          "valid_pairs": 5,
+          "changes": 0,
+          "rate": 0.0
+        }
+      },
+      "by_stage_concurrency_schedule": {
+        "pilot:c1:sequential": {
+          "requests": 20,
+          "valid_requests": 20,
+          "complete_decisions": 5,
+          "latency_s": {
+            "n": 20,
+            "median": 1.096449236618355,
+            "p90": 1.9815117929596466,
+            "p95": 2.844867749698461,
+            "max": 3.828129441011697
+          },
+          "http_attempt_latency_s": {
+            "n": 20,
+            "median": 1.0843378088902682,
+            "p90": 1.970625890325756,
+            "p95": 2.833898120373488,
+            "max": 3.8173549748025835
+          },
+          "client_overhead_including_backoff_s": {
+            "n": 20,
+            "median": 0.010710793547332287,
+            "p90": 0.013642335310578346,
+            "p95": 0.013820700207725169,
+            "max": 0.014632151927798986
+          },
+          "sequential_sum_s": {
+            "n": 5,
+            "median": 4.971983831841499,
+            "p90": 7.053436100296676,
+            "p95": 7.254592006467282,
+            "max": 7.455747912637889
+          },
+          "parallel_critical_path_s": {
+            "n": 5,
+            "median": 2.8141919528134167,
+            "p90": 4.690256046690047,
+            "p95": 5.002633964456617,
+            "max": 5.315011882223189
+          },
+          "sidecar_added_latency_s": {
+            "n": 5,
+            "median": 3.8501357240602374,
+            "p90": 5.7777786525897685,
+            "p95": 5.873546428792179,
+            "max": 5.969314204994589
+          },
+          "observed_audit_s": {
+            "n": 5,
+            "median": 4.972679303959012,
+            "p90": 7.054152839258313,
+            "p95": 7.255281815025955,
+            "max": 7.456410790793598
+          },
+          "cost_usd": 0.0028735,
+          "probe_cost_usd": 0.0022392,
+          "cost_per_audited_decision_usd": 0.0005747,
+          "probe_cost_per_audited_decision_usd": 0.00044783999999999997,
+          "request_utc_window": {
+            "start": "2026-11-19T16:16:22.347535+00:00",
+            "end": "2026-11-19T16:16:49.882446+00:00"
+          },
+          "errors": 0,
+          "invalid_responses": 0,
+          "invalid_request_share": 0.0,
+          "invalid_response_share_among_returned": 0.0,
+          "provider_routing_deviations": 0,
+          "http_attempts": 20,
+          "retries": 0,
+          "count_429": 0,
+          "count_5xx": 0,
+          "error_rate": 0.0,
+          "rate_429": 0.0,
+          "action_changes_sanity_only": {
+            "news": {
+              "valid_pairs": 5,
+              "changes": 4,
+              "rate": 0.8
+            },
+            "momentum": {
+              "valid_pairs": 5,
+              "changes": 2,
+              "rate": 0.4
+            },
+            "null": {
+              "valid_pairs": 5,
+              "changes": 0,
+              "rate": 0.0
+            }
+          },
+          "median_latency_inflation_vs_full_c1_parallel": null,
+          "median_sidecar_inflation_vs_full_c1_parallel": null
+        }
+      }
+    },
+    "openai/gpt-6-luna": {
+      "requests": 20,
+      "valid_requests": 20,
+      "complete_decisions": 5,
+      "latency_s": {
+        "n": 20,
+        "median": 3.4363088817335665,
+        "p90": 8.052639764128257,
+        "p95": 10.569021943723783,
+        "max": 10.901174488011748
+      },
+      "http_attempt_latency_s": {
+        "n": 20,
+        "median": 3.4203449012711644,
+        "p90": 8.037309095915411,
+        "p95": 10.553542503761127,
+        "max": 10.885482757817954
+      },
+      "client_overhead_including_backoff_s": {
+        "n": 20,
+        "median": 0.01542419265024364,
+        "p90": 0.016234834119677542,
+        "p95": 0.01645400843117386,
+        "max": 0.01651756977662444
+      },
+      "sequential_sum_s": {
+        "n": 5,
+        "median": 13.708146139513701,
+        "p90": 30.25543476305902,
+        "p95": 33.22019463330507,
+        "max": 36.184954503551126
+      },
+      "parallel_critical_path_s": {
+        "n": 5,
+        "median": 7.008054699283093,
+        "p90": 15.789792839903384,
+        "p95": 16.82411147793755,
+        "max": 17.858430115971714
+      },
+      "sidecar_added_latency_s": {
+        "n": 5,
+        "median": 10.412115659099072,
+        "p90": 23.127180127054455,
+        "p95": 26.178191088419403,
+        "max": 29.229202049784362
+      },
+      "observed_audit_s": {
+        "n": 5,
+        "median": 13.711020364426076,
+        "p90": 30.257906909938903,
+        "p95": 33.22269088188186,
+        "max": 36.187474853824824
+      },
+      "cost_usd": 0.0016448,
+      "probe_cost_usd": 0.0012321,
+      "cost_per_audited_decision_usd": 0.00032896,
+      "probe_cost_per_audited_decision_usd": 0.00024642,
+      "request_utc_window": {
+        "start": "2026-11-19T16:16:49.882876+00:00",
+        "end": "2026-11-19T16:18:12.164266+00:00"
+      },
+      "errors": 0,
+      "invalid_responses": 0,
+      "invalid_request_share": 0.0,
+      "invalid_response_share_among_returned": 0.0,
+      "provider_routing_deviations": 0,
+      "http_attempts": 20,
+      "retries": 0,
+      "count_429": 0,
+      "count_5xx": 0,
+      "error_rate": 0.0,
+      "rate_429": 0.0,
+      "action_changes_sanity_only": {
+        "news": {
+          "valid_pairs": 5,
+          "changes": 0,
+          "rate": 0.0
+        },
+        "momentum": {
+          "valid_pairs": 5,
+          "changes": 4,
+          "rate": 0.8
+        },
+        "null": {
+          "valid_pairs": 5,
+          "changes": 0,
+          "rate": 0.0
+        }
+      },
+      "by_stage_concurrency_schedule": {
+        "pilot:c1:sequential": {
+          "requests": 20,
+          "valid_requests": 20,
+          "complete_decisions": 5,
+          "latency_s": {
+            "n": 20,
+            "median": 3.4363088817335665,
+            "p90": 8.052639764128257,
+            "p95": 10.569021943723783,
+            "max": 10.901174488011748
+          },
+          "http_attempt_latency_s": {
+            "n": 20,
+            "median": 3.4203449012711644,
+            "p90": 8.037309095915411,
+            "p95": 10.553542503761127,
+            "max": 10.885482757817954
+          },
+          "client_overhead_including_backoff_s": {
+            "n": 20,
+            "median": 0.01542419265024364,
+            "p90": 0.016234834119677542,
+            "p95": 0.01645400843117386,
+            "max": 0.01651756977662444
+          },
+          "sequential_sum_s": {
+            "n": 5,
+            "median": 13.708146139513701,
+            "p90": 30.25543476305902,
+            "p95": 33.22019463330507,
+            "max": 36.184954503551126
+          },
+          "parallel_critical_path_s": {
+            "n": 5,
+            "median": 7.008054699283093,
+            "p90": 15.789792839903384,
+            "p95": 16.82411147793755,
+            "max": 17.858430115971714
+          },
+          "sidecar_added_latency_s": {
+            "n": 5,
+            "median": 10.412115659099072,
+            "p90": 23.127180127054455,
+            "p95": 26.178191088419403,
+            "max": 29.229202049784362
+          },
+          "observed_audit_s": {
+            "n": 5,
+            "median": 13.711020364426076,
+            "p90": 30.257906909938903,
+            "p95": 33.22269088188186,
+            "max": 36.187474853824824
+          },
+          "cost_usd": 0.0016448,
+          "probe_cost_usd": 0.0012321,
+          "cost_per_audited_decision_usd": 0.00032896,
+          "probe_cost_per_audited_decision_usd": 0.00024642,
+          "request_utc_window": {
+            "start": "2026-11-19T16:16:49.882876+00:00",
+            "end": "2026-11-19T16:18:12.164266+00:00"
+          },
+          "errors": 0,
+          "invalid_responses": 0,
+          "invalid_request_share": 0.0,
+          "invalid_response_share_among_returned": 0.0,
+          "provider_routing_deviations": 0,
+          "http_attempts": 20,
+          "retries": 0,
+          "count_429": 0,
+          "count_5xx": 0,
+          "error_rate": 0.0,
+          "rate_429": 0.0,
+          "action_changes_sanity_only": {
+            "news": {
+              "valid_pairs": 5,
+              "changes": 0,
+              "rate": 0.0
+            },
+            "momentum": {
+              "valid_pairs": 5,
+              "changes": 4,
+              "rate": 0.8
+            },
+            "null": {
+              "valid_pairs": 5,
+              "changes": 0,
+              "rate": 0.0
+            }
+          },
+          "median_latency_inflation_vs_full_c1_parallel": null,
+          "median_sidecar_inflation_vs_full_c1_parallel": null
+        }
+      }
+    }
+  },
+  "sidecar_added_latency_definition": "Per decision: last probe end minus first probe start; news, momentum and null only; base excluded.",
+  "input_sha256": {
+    "data/v2/latency/requests.jsonl": "98e48128aa3301338fde1ee89bcd3d9390edca95f6403b7240032e6868a75f51",
+    "data/v2/latency_ledger.jsonl": "8e79d885a954dd5cabe65e00d20d9be0bfab45bb19019687cf8770df947d4c17"
+  },
+  "total_cost_usd": 0.140557464,
+  "run_utc_window": {
+    "start": "2026-11-19T16:16:03.664825+00:00",
+    "end": "2026-11-19T16:33:25.617946+00:00"
+  },
+  "validation": {
+    "checked_utc": "2026-11-19T16:34:41.412150+00:00",
+    "requests": 1260,
+    "audited_decisions": 315,
+    "unique_source_files_verified_unchanged": 113,
+    "ledger_records": 1260,
+    "checks": [
+      "Exact four-call protocol and logged prompt perturbations/null identity",
+      "Distinct deterministic pilot/full samples",
+      "Source SHA256 unchanged",
+      "Monotonic timing identities and nonnegative overhead",
+      "Base before all probes; sequential probes ordered",
+      "Audited decisions in flight never exceed group concurrency",
+      "Dedicated ledger totals equal request totals and satisfy both provider and aggregate caps",
+      "Both stages complete; no stage relaunched"
+    ],
+    "peak_audited_decisions_in_flight": {
+      "pilot:deepseek-v4-flash:c1:sequential": 1,
+      "pilot:anthropic/claude-haiku-5.5:c1:sequential": 1,
+      "pilot:openai/gpt-6-luna:c1:sequential": 1,
+      "full:deepseek-v4-flash:c1:sequential": 1,
+      "full:deepseek-v4-flash:c1:parallel": 1,
+      "full:deepseek-v4-flash:c4:parallel": 4,
+      "full:deepseek-v4-flash:c8:parallel": 8,
+      "full:anthropic/claude-haiku-5.5:c1:sequential": 1,
+      "full:anthropic/claude-haiku-5.5:c1:parallel": 1,
+      "full:anthropic/claude-haiku-5.5:c4:parallel": 4,
+      "full:anthropic/claude-haiku-5.5:c8:parallel": 8,
+      "full:openai/gpt-6-luna:c1:sequential": 1,
+      "full:openai/gpt-6-luna:c1:parallel": 1,
+      "full:openai/gpt-6-luna:c4:parallel": 4,
+      "full:openai/gpt-6-luna:c8:parallel": 8
+    },
+    "deviations": [
+      "Native DeepSeek charged cost cannot be directly retrieved per request; reported token/cache usage is priced with the unchanged study snapshot and labelled estimated",
+      "Physical single-client host/egress location is unverified and reported as such"
+    ],
+    "clarifications": [
+      "No prompt-state approximation was needed: every source portfolio was replayed and checked against logged wealth before selection",
+      "Measured sequential and parallel schedules use disjoint samples; arithmetic critical-path estimates remain clearly labelled",
+      "Light concurrency checks use bounded waves, with a partial final c8 wave; no steady-state throughput claim",
+      "Full run exactly matches approved 30 sequential plus 30 parallel c1, 20 c4 and 20 c8 decisions per model"
+    ],
+    "tests": {
+      "historical_benchmark": "7 passed at collection time",
+      "current_release": "See VERIFICATION.md for the current complete offline suite"
+    },
+    "code_sha256_at_collection": {
+      "src/v2/latency_benchmark.py": "f7e106df81b044f8c0369196e3e3505688cd18c57bdd3b3df0061ea67bd1c03f",
+      "tests/v2/test_latency_benchmark.py": "29a955ad86aa229479a990c5e66af43d0f0488e046e14e6dd77fb858bb2433b9"
+    },
+    "public_packaging": "Historical collection validation; source hashes identify the original collection implementation, before portable-path and public documentation changes."
+  }
+}
